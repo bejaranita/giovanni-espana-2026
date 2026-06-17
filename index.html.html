@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giovanni & Sons · España 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1A2744;--navy-light:#243550;--gold:#C9A84C;--gold-light:#E8C97A;
+  --terra:#C4583A;--olive:#6B7A3E;--cream:#F5EFE4;--white:#FDFAF4;
+  --text:#1A1A1A;--muted:#6B6B6B;--border:#E0D6C8;
+  --font-display:"Playfair Display",serif;--font-body:"DM Sans",sans-serif;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);background:var(--white);color:var(--text);font-size:14px;line-height:1.6}
+
+/* NAV */
+.top-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy);border-bottom:1px solid rgba(201,168,76,.2);overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.top-nav::-webkit-scrollbar{display:none}
+.nav-inner{display:inline-flex;gap:0;padding:0 8px}
+.nav-btn{background:none;border:none;color:rgba(255,255,255,.5);font-family:var(--font-body);font-size:11px;font-weight:500;letter-spacing:.5px;padding:12px 14px;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap}
+.nav-btn:hover{color:rgba(255,255,255,.8)}
+.nav-btn.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* PAGES */
+.page{display:none;padding-top:44px;min-height:100vh}
+.page.active{display:block}
+
+/* ── PORTADA ── */
+.portada-wrap{background:var(--navy);min-height:100vh;padding:40px 40px 0;position:relative;overflow:hidden}
+.portada-wrap::before{content:"";position:absolute;top:-120px;right:-120px;width:380px;height:380px;border-radius:50%;border:1px solid rgba(201,168,76,.1);pointer-events:none}
+.portada-wrap::after{content:"ESPAÑA";position:absolute;bottom:20px;right:30px;font-family:var(--font-display);font-size:100px;font-weight:700;color:rgba(255,255,255,.04);letter-spacing:8px;pointer-events:none}
+.p-eyebrow{font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.p-title{font-family:var(--font-display);font-size:44px;font-weight:400;color:#fff;line-height:1.05;margin-bottom:4px}
+.p-title em{font-style:italic;color:var(--gold)}
+.p-subtitle{font-family:var(--font-display);font-style:italic;font-size:18px;color:rgba(255,255,255,.4);margin-bottom:20px}
+.p-meta{display:flex;flex-wrap:wrap;gap:24px;margin-bottom:32px;padding-bottom:24px;border-bottom:1px solid rgba(201,168,76,.18)}
+.p-meta-item{display:flex;flex-direction:column;gap:2px}
+.p-meta-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.28)}
+.p-meta-val{font-size:12px;color:rgba(255,255,255,.8);font-weight:500}
+.cal-section{padding:0 0 32px}
+.cal-months{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.cal-month{padding:16px 0}
+.cal-month:first-child{padding-right:24px;border-right:1px solid rgba(201,168,76,.15)}
+.cal-month:last-child{padding-left:24px}
+.cal-month-name{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;font-weight:500}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal-dn{font-size:9px;text-align:center;color:rgba(255,255,255,.28);padding-bottom:4px;font-weight:500;text-transform:uppercase}
+.cal-dc{border-radius:3px;padding:5px 4px;min-height:44px;display:flex;flex-direction:column;gap:2px;background:rgba(255,255,255,.05)}
+.cal-dc.empty{background:transparent}
+.cal-dc-num{font-size:11px;font-weight:500;color:rgba(255,255,255,.3);line-height:1}
+.cal-dc.active .cal-dc-num{color:rgba(255,255,255,.95)}
+.cal-dc-dest{font-size:8.5px;line-height:1.2;font-weight:400}
+.cal-dc.pin{outline:1.5px solid var(--gold);outline-offset:-1.5px}
+.cal-dc.pin .cal-dc-num{color:var(--gold)}
+.p-legend{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:20px 0 32px;border-top:1px solid rgba(201,168,76,.15)}
+.p-leg{display:flex;align-items:center;gap:8px}
+.p-leg-sw{width:24px;height:5px;border-radius:2px;flex-shrink:0}
+.p-leg-txt{font-size:10px;color:rgba(255,255,255,.55);line-height:1.3}
+.p-leg-d{font-size:9px;color:rgba(255,255,255,.3);display:block}
+
+/* ── MAPA ── */
+.mapa-wrap{background:var(--navy);min-height:calc(100vh - 44px);padding:32px 40px;display:flex;flex-direction:column;gap:24px}
+.mapa-title{font-family:var(--font-display);font-size:28px;font-weight:400;color:#fff}
+.mapa-title em{font-style:italic;color:var(--gold)}
+.mapa-body{display:grid;grid-template-columns:1fr 380px;gap:32px;flex:1}
+.mapa-svg-wrap{background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.15);border-radius:4px;display:flex;align-items:center;justify-content:center;padding:20px;min-height:500px}
+.mapa-stops{display:flex;flex-direction:column;gap:8px}
+.stop-card{background:rgba(255,255,255,.06);border-left:3px solid var(--gold);padding:10px 14px;border-radius:0 3px 3px 0;cursor:pointer;transition:background .2s}
+.stop-card:hover{background:rgba(255,255,255,.1)}
+.stop-num{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:2px}
+.stop-city{font-size:14px;font-weight:600;color:#fff}
+.stop-dates{font-size:11px;color:rgba(255,255,255,.5)}
+.stop-km{font-size:10px;color:var(--gold);margin-top:2px}
+
+/* ── DESTINO ── */
+.dest-hero{background:var(--navy);padding:40px 48px 32px;position:relative;overflow:hidden}
+.dest-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.06) 0%,transparent 60%)}
+.dest-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
+.dest-city{font-family:var(--font-display);font-size:48px;font-weight:400;color:#fff;line-height:1}
+.dest-city em{font-style:italic;color:var(--gold)}
+.dest-meta-row{display:flex;flex-wrap:wrap;gap:28px;margin-top:16px}
+.dest-meta{display:flex;flex-direction:column;gap:2px}
+.dest-meta-label{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3)}
+.dest-meta-val{font-size:13px;color:rgba(255,255,255,.85);font-weight:500}
+.dest-drive{background:var(--terra);color:#fff;padding:12px 20px;border-radius:2px;text-align:right;min-width:160px}
+.dest-drive-km{font-size:20px;font-weight:700}
+.dest-drive-route{font-size:10px;opacity:.75;margin-top:2px}
+
+.dest-body{padding:36px 48px;display:grid;grid-template-columns:1fr;gap:32px}
+.dest-desc{font-size:15px;line-height:1.75;color:#2C2C2C;max-width:800px}
+.dest-desc strong{color:var(--navy);font-weight:600}
+
+.section-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--terra);font-weight:600;margin-bottom:12px}
+
+/* Activity cards */
+.act-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.act-card{background:#fff;border:1px solid var(--border);border-radius:3px;padding:16px;position:relative}
+.act-card.must{border-left:3px solid var(--terra)}
+.act-card.reserve{border-left:3px solid var(--gold)}
+.act-card.free{border-left:3px solid var(--olive)}
+.act-tag{display:inline-block;padding:2px 8px;border-radius:2px;font-size:9px;font-weight:600;letter-spacing:.5px;margin-bottom:6px}
+.tag-must{background:#FDE8E2;color:var(--terra)}
+.tag-reserve{background:#FFF3CD;color:#7A5800}
+.tag-free{background:#E8F0E4;color:var(--olive)}
+.tag-chico{background:#EEF2FF;color:#4338CA}
+.act-name{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:4px}
+.act-detail{font-size:12px;color:var(--muted);line-height:1.5}
+.act-price{font-size:11px;color:var(--olive);font-weight:600;margin-top:6px}
+
+/* Chicos box */
+.chicos-box{background:var(--navy);border-radius:3px;padding:24px 28px}
+.chicos-title{font-family:var(--font-display);font-size:18px;font-weight:400;color:var(--gold);font-style:italic;margin-bottom:16px}
+.chicos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.chicos-item{background:rgba(255,255,255,.07);border-radius:2px;padding:12px 14px}
+.chicos-item-title{font-size:11px;font-weight:600;color:rgba(255,255,255,.9);margin-bottom:4px}
+.chicos-item-desc{font-size:11px;color:rgba(255,255,255,.5);line-height:1.5}
+
+/* Excursions */
+.exc-band{display:flex;gap:12px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.exc-band::-webkit-scrollbar{display:none}
+.exc-card{background:var(--cream);border:1px solid var(--border);border-radius:3px;padding:16px 20px;min-width:220px;flex-shrink:0}
+.exc-title{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:4px}
+.exc-dist{font-size:11px;color:var(--terra);font-weight:500;margin-bottom:6px}
+.exc-desc{font-size:12px;color:var(--muted);line-height:1.5}
+
+/* Drive footer */
+.drive-footer{background:var(--cream);border-top:1px solid var(--border);padding:16px 48px;display:flex;align-items:center;justify-content:space-between}
+.drive-footer-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.drive-footer-val{font-size:14px;font-weight:600;color:var(--navy)}
+.drive-footer-route{font-size:12px;color:var(--muted)}
+
+/* RESERVAS */
+.res-wrap{padding:40px 48px}
+.res-title{font-family:var(--font-display);font-size:32px;font-weight:400;color:var(--navy);margin-bottom:8px}
+.res-title em{font-style:italic;color:var(--terra)}
+.res-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:24px}
+.res-card{background:var(--navy);border-radius:3px;padding:16px 20px}
+.res-icon{font-size:18px;margin-bottom:6px}
+.res-name{font-size:11px;font-weight:600;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px}
+.res-detail{font-size:12px;color:rgba(255,255,255,.6);line-height:1.5}
+.res-card.done{border-left:3px solid var(--olive)}
+.res-card.urgent{border-left:3px solid var(--terra)}
+.res-card.pending{border-left:3px solid var(--gold)}
+
+@media(max-width:700px){
+  /* Layout */
+  .portada-wrap,.dest-body,.dest-hero,.res-wrap{padding-left:16px;padding-right:16px}
+  .mapa-wrap{padding-left:16px;padding-right:16px}
+  .drive-footer{padding-left:16px;padding-right:16px;flex-direction:column;gap:12px}
+
+  /* Nav — bigger touch targets */
+  .nav-btn{padding:10px 12px;font-size:10px}
+
+  /* Portada */
+  .p-title{font-size:28px}
+  .p-subtitle{font-size:15px}
+  .p-meta{gap:16px}
+  .p-meta-val{font-size:12px}
+  .cal-months{grid-template-columns:1fr}
+  .cal-month:first-child{padding-right:0;border-right:none;border-bottom:1px solid rgba(201,168,76,.15);padding-bottom:16px;margin-bottom:8px}
+  .cal-month:last-child{padding-left:0}
+  .cal-dc{min-height:38px;padding:4px 3px}
+  .cal-dc-num{font-size:10px}
+  .cal-dc-dest{font-size:7.5px}
+  .p-legend{grid-template-columns:repeat(2,1fr);gap:6px}
+  .p-leg-txt{font-size:10px}
+
+  /* Destination hero */
+  .dest-city{font-size:30px}
+  .dest-meta-row{gap:16px}
+  .dest-drive{min-width:unset;width:100%}
+
+  /* Cards */
+  .act-grid{grid-template-columns:1fr}
+  .chicos-grid{grid-template-columns:1fr}
+  .exc-band{gap:10px}
+  .exc-card{min-width:200px}
+
+  /* Map */
+  .mapa-body{grid-template-columns:1fr}
+  .mapa-svg-wrap{min-height:260px;padding:12px}
+  .mapa-stops{margin-top:16px}
+
+  /* Tables — horizontal scroll */
+  table{font-size:12px;display:block;overflow-x:auto;white-space:nowrap}
+  th,td{padding:8px 10px}
+
+  /* Reservas */
+  .res-grid{grid-template-columns:1fr}
+
+  /* portada after text hidden on mobile */
+  .portada-wrap::after{display:none}
+}
+
+/* Extra small */
+@media(max-width:380px){
+  .p-title{font-size:24px}
+  .dest-city{font-size:26px}
+  .cal-dc-dest{font-size:7px}
+  .nav-btn{padding:8px 10px;font-size:9px}
+}
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="goPage('portada')">🗓 Portada</button>
+    <button class="nav-btn" onclick="goPage('mapa')">🗺 Ruta</button>
+    <button class="nav-btn" onclick="goPage('elbruc')">🛬 El Bruc</button>
+    <button class="nav-btn" onclick="goPage('barcelona')">🏙 Barcelona</button>
+    <button class="nav-btn" onclick="goPage('valencia')">🌊 Valencia</button>
+    <button class="nav-btn" onclick="goPage('cartagena')">⚓ Cartagena</button>
+    <button class="nav-btn" onclick="goPage('malaga')">🌅 Málaga</button>
+    <button class="nav-btn" onclick="goPage('granada')">🏰 Granada</button>
+    <button class="nav-btn" onclick="goPage('madrid')">👑 Madrid</button>
+    <button class="nav-btn" onclick="goPage('reservas')">📋 Reservas</button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     PORTADA
+══════════════════════════════════════════ -->
+<div id="portada" class="page active">
+<div class="portada-wrap">
+  <div class="p-eyebrow">Road Trip · Verano 2025</div>
+  <div class="p-title">Giovanni <em>&</em> Sons</div>
+  <div class="p-subtitle">La Ruta del Mediterráneo</div>
+  <div class="p-meta">
+    <div class="p-meta-item"><span class="p-meta-label">Fechas</span><span class="p-meta-val">21 Jun – 23 Jul 2025</span></div>
+    <div class="p-meta-item"><span class="p-meta-label">Distancia</span><span class="p-meta-val">~4,000 km</span></div>
+    <div class="p-meta-item"><span class="p-meta-label">Duración</span><span class="p-meta-val">32 días</span></div>
+    <div class="p-meta-item"><span class="p-meta-label">Viajeros</span><span class="p-meta-val">Giovanni + 3 hijos</span></div>
+    <div class="p-meta-item"><span class="p-meta-label">Bases</span><span class="p-meta-val">7 ciudades</span></div>
+  </div>
+  <div class="cal-section">
+    <div class="cal-months">
+      <div class="cal-month"><div class="cal-month-name">Junio 2025</div><div class="cal-grid" id="cal-jun"></div></div>
+      <div class="cal-month"><div class="cal-month-name">Julio 2025</div><div class="cal-grid" id="cal-jul"></div></div>
+    </div>
+  </div>
+  <div class="p-legend" id="p-legend"></div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MAPA RUTA
+══════════════════════════════════════════ -->
+<div id="mapa" class="page">
+<div class="mapa-wrap">
+  <div>
+    <div class="p-eyebrow">Circuito completo</div>
+    <div class="mapa-title">La <em>Ruta</em> en España</div>
+  </div>
+  <div class="mapa-body">
+    <div class="mapa-svg-wrap">
+      <svg viewBox="0 0 560 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:560px">
+        <!-- Spain outline simplified -->
+        <path d="M80,60 L120,40 L160,35 L200,40 L240,30 L290,25 L340,30 L380,45 L420,40 L460,60 L490,90 L500,130 L495,170 L480,200 L470,230 L460,260 L455,290 L445,320 L430,350 L410,370 L390,390 L360,400 L330,410 L300,415 L270,420 L240,415 L210,405 L180,390 L155,370 L130,345 L110,315 L95,280 L80,250 L65,220 L55,190 L50,160 L55,130 L65,100 Z" fill="rgba(255,255,255,0.06)" stroke="rgba(201,168,76,0.3)" stroke-width="1.5"/>
+        <!-- Portugal area -->
+        <path d="M80,60 L65,100 L55,130 L50,160 L55,190 L65,220 L80,250 L95,280 L110,315 L115,310 L105,280 L90,250 L78,220 L70,190 L68,160 L72,130 L82,100 L90,70 Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="3,3"/>
+        <!-- Pyrenees marker -->
+        <path d="M240,30 L290,25 L340,30" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+
+        <!-- ROUTE LINE -->
+        <path d="M285,115 L230,95 L225,100 L230,170 L232,175 L240,280 L235,295 L220,325 L240,365 L280,385 L310,360 L340,310 L335,265" 
+              stroke="rgba(201,168,76,0.7)" stroke-width="2.5" fill="none" stroke-dasharray="6,3"/>
+
+        <!-- CITY DOTS & LABELS -->
+        <!-- 1 Madrid (start/end) -->
+        <circle cx="285" cy="195" r="8" fill="#888780" stroke="var(--navy)" stroke-width="2"/>
+        <text x="295" y="199" fill="rgba(255,255,255,0.8)" font-size="10" font-family="DM Sans,sans-serif" font-weight="600">Madrid</text>
+        <text x="295" y="210" fill="rgba(255,255,255,0.4)" font-size="8" font-family="DM Sans,sans-serif">18–23 jul</text>
+
+        <!-- 2 Zaragoza (stop) -->
+        <circle cx="355" cy="115" r="5" fill="rgba(255,255,255,0.3)" stroke="var(--gold)" stroke-width="1.5"/>
+        <text x="363" y="119" fill="rgba(255,255,255,0.5)" font-size="9" font-family="DM Sans,sans-serif">Zaragoza ⏸</text>
+
+        <!-- 3 El Bruc -->
+        <circle cx="410" cy="130" r="5" fill="#4A6741" stroke="#fff" stroke-width="1.5"/>
+        <text x="418" y="134" fill="rgba(255,255,255,0.7)" font-size="9" font-family="DM Sans,sans-serif">El Bruc</text>
+        <text x="418" y="144" fill="rgba(255,255,255,0.35)" font-size="8" font-family="DM Sans,sans-serif">22 jun</text>
+
+        <!-- 4 Barcelona -->
+        <circle cx="430" cy="100" r="9" fill="#C4583A" stroke="#fff" stroke-width="2"/>
+        <text x="441" y="104" fill="rgba(255,255,255,0.9)" font-size="11" font-family="DM Sans,sans-serif" font-weight="600">Barcelona</text>
+        <text x="441" y="115" fill="rgba(255,255,255,0.4)" font-size="8" font-family="DM Sans,sans-serif">23–29 jun · 7n</text>
+
+        <!-- 5 Valencia -->
+        <circle cx="410" cy="210" r="8" fill="#185FA5" stroke="#fff" stroke-width="2"/>
+        <text x="420" y="214" fill="rgba(255,255,255,0.9)" font-size="10" font-family="DM Sans,sans-serif" font-weight="600">Valencia</text>
+        <text x="420" y="225" fill="rgba(255,255,255,0.4)" font-size="8" font-family="DM Sans,sans-serif">30 jun–4 jul · 5n</text>
+
+        <!-- 6 Alicante (parada) -->
+        <circle cx="400" cy="255" r="5" fill="rgba(159,148,228,0.8)" stroke="#fff" stroke-width="1.5"/>
+        <text x="407" y="259" fill="rgba(255,255,255,0.6)" font-size="9" font-family="DM Sans,sans-serif">Alicante ⏸</text>
+
+        <!-- 7 Cartagena -->
+        <circle cx="388" cy="295" r="7" fill="#BA7517" stroke="#fff" stroke-width="2"/>
+        <text x="396" y="299" fill="rgba(255,255,255,0.9)" font-size="10" font-family="DM Sans,sans-serif" font-weight="600">Cartagena</text>
+        <text x="396" y="309" fill="rgba(255,255,255,0.4)" font-size="8" font-family="DM Sans,sans-serif">5–6 jul · 2n</text>
+
+        <!-- 8 Cabo de Gata (parada) -->
+        <circle cx="360" cy="345" r="5" fill="rgba(212,112,96,0.8)" stroke="#fff" stroke-width="1.5"/>
+        <text x="367" y="349" fill="rgba(255,255,255,0.6)" font-size="9" font-family="DM Sans,sans-serif">Cabo Gata ⏸</text>
+
+        <!-- 9 Málaga -->
+        <circle cx="290" cy="385" r="9" fill="#A0522D" stroke="#fff" stroke-width="2"/>
+        <text x="276" y="403" fill="rgba(255,255,255,0.9)" font-size="11" font-family="DM Sans,sans-serif" font-weight="600">Málaga</text>
+        <text x="270" y="414" fill="rgba(255,255,255,0.4)" font-size="8" font-family="DM Sans,sans-serif">7–13 jul · 7n</text>
+
+        <!-- 10 Granada -->
+        <circle cx="320" cy="355" r="8" fill="#534AB7" stroke="#fff" stroke-width="2"/>
+        <text x="328" y="359" fill="rgba(255,255,255,0.9)" font-size="10" font-family="DM Sans,sans-serif" font-weight="600">Granada</text>
+        <text x="328" y="369" fill="rgba(255,255,255,0.4)" font-size="8" font-family="DM Sans,sans-serif">14–17 jul · 4n</text>
+
+        <!-- Route arrows / sequence numbers -->
+        <text x="276" y="133" fill="rgba(201,168,76,0.6)" font-size="9" font-family="DM Sans,sans-serif">① → ②</text>
+
+        <!-- Compass rose -->
+        <text x="80" y="430" fill="rgba(255,255,255,0.2)" font-size="11" font-family="DM Sans,sans-serif">N ↑</text>
+        <text x="30" y="290" fill="rgba(255,255,255,0.08)" font-size="52" font-family="Playfair Display,serif" transform="rotate(-90,40,290)">MAR MEDITERRÁNEO</text>
+      </svg>
+    </div>
+    <div class="mapa-stops" id="mapa-stops"></div>
+  </div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     EL BRUC
+══════════════════════════════════════════ -->
+<div id="elbruc" class="page">
+<div class="dest-hero">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px">
+    <div>
+      <div class="dest-eyebrow">Etapa 1 · 22 junio</div>
+      <div class="dest-city">El <em>Bruc</em></div>
+      <div class="dest-meta-row">
+        <div class="dest-meta"><span class="dest-meta-label">Noches</span><span class="dest-meta-val">1 noche</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Hotel</span><span class="dest-meta-val">Masia Can Farrés ✅</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Desde Madrid T4</span><span class="dest-meta-val">575 km · 5h 30min</span></div>
+      </div>
+    </div>
+    <div class="dest-drive"><div class="dest-drive-km">+Zaragoza</div><div class="dest-drive-route">Parada almuerzo · divide el trayecto</div></div>
+  </div>
+</div>
+<div class="dest-body">
+  <p class="dest-desc">El Bruc es un municipio de la comarca del Bages, enclavado en el macizo de Montserrat. La <strong>Masia Can Farrés</strong> — ya reservada — es una masía catalana del s.XVIII reconvertida en hotel rural con piscina exterior y jardines, rodeada de bosque y silencio. El objetivo de esta primera noche es simple: descansar del vuelo trasatlántico y del trayecto en coche antes de la diligencia del día siguiente.</p>
+  <div>
+    <div class="section-eyebrow">Ruta Madrid T4 → El Bruc</div>
+    <div class="act-grid">
+      <div class="act-card">
+        <div class="act-name">Salida Madrid T4</div>
+        <div class="act-detail">Recoger coche en SIXT/Europcar. Salir directo a la A-2 hacia Zaragoza. Trayecto: 325 km · 3h.</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Parada Zaragoza</div>
+        <div class="act-detail">Almuerzo en el Casco Antiguo o La Aljafería (exterior). Descanso 1–2h. Luego 250 km más hasta El Bruc.</div>
+        <div class="act-price">~12:00h · 250 km restantes</div>
+      </div>
+      <div class="act-card must">
+        <div class="act-tag tag-must">RECORDAR</div>
+        <div class="act-name">Diligencia mañana 23 jun</div>
+        <div class="act-detail">Confirmar dirección exacta con Giovanni. Salida hacia Barcelona inmediatamente después: 58 km · 45 min.</div>
+        <div class="act-price">09:00h</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="section-eyebrow">Masia Can Farrés · Datos confirmados</div>
+    <div class="act-grid">
+      <div class="act-card done">
+        <div class="act-name">📞 +34 938 771 900</div>
+        <div class="act-detail">Camí de Can Farrés, S/N · 08294 El Bruc, Barcelona<br>WhatsApp: +34 646 348 000<br>info@hotelcanfarres.com</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Check-in / Check-out</div>
+        <div class="act-detail">Check-in: 15:00–21:00h (self check-in nocturno disponible)<br>Check-out: 11:00h</div>
+        <div class="act-price">Booking #6044730097 · PIN 0673</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="drive-footer">
+  <div><div class="drive-footer-label">Siguiente destino</div><div class="drive-footer-val">Barcelona</div><div class="drive-footer-route">A-2 · 58 km · 45 min · tras la diligencia</div></div>
+  <button class="nav-btn" onclick="goPage('barcelona')" style="background:var(--terra);color:#fff;border-radius:2px;padding:10px 20px;font-size:12px">Barcelona →</button>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BARCELONA
+══════════════════════════════════════════ -->
+<div id="barcelona" class="page">
+<div class="dest-hero">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px">
+    <div>
+      <div class="dest-eyebrow">Etapa 2 · 23–29 junio</div>
+      <div class="dest-city"><em>Barcelona</em></div>
+      <div class="dest-meta-row">
+        <div class="dest-meta"><span class="dest-meta-label">Noches</span><span class="dest-meta-val">7 noches</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Barrio</span><span class="dest-meta-val">Eixample o El Born</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Examen</span><span class="dest-meta-val">Cervantes · 25 jun ⚑</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Parking</span><span class="dest-meta-val">Dejar coche en parking cubierto</span></div>
+      </div>
+    </div>
+    <div class="dest-drive"><div class="dest-drive-km">58 km</div><div class="dest-drive-route">El Bruc → Barcelona · A-2 · 45 min</div></div>
+  </div>
+</div>
+<div class="dest-body">
+  <p class="dest-desc">Barcelona es probablemente la ciudad más completa de España para un viaje en familia con jóvenes. La arquitectura modernista de <strong>Gaudí</strong> convive con playas urbanas, mercados históricos y una gastronomía que va desde el bocadillo de jamón hasta la alta cocina. El <strong>Eixample</strong> — el barrio de la cuadrícula perfecta — es la mejor base: todo a pie, transporte excelente, y en el centro exacto de la ciudad. 7 noches dan tiempo suficiente para descubrir la ciudad con calma y hacer dos excursiones.</p>
+  <div>
+    <div class="section-eyebrow">Qué hacer · Plan por días sugerido</div>
+    <div class="act-grid">
+      <div class="act-card must">
+        <div class="act-tag tag-must">RESERVAR</div>
+        <div class="act-name">Sagrada Família</div>
+        <div class="act-detail">La obra maestra inacabada de Gaudí. Reservar con tiempo — julio se agota semanas antes. Torres opcionales.</div>
+        <div class="act-price">€26 básico / €36 con torre · sagradafamilia.org</div>
+      </div>
+      <div class="act-card reserve">
+        <div class="act-tag tag-reserve">RESERVAR</div>
+        <div class="act-name">Park Güell</div>
+        <div class="act-detail">Zona monumental con aforo limitado. El dragón de mosaico y la terraza son el punto más fotogénico de Barcelona.</div>
+        <div class="act-price">€10 zona monumental · parkguell.barcelona</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Casa Batlló · fachada</div>
+        <div class="act-detail">La entrada es cara — el exterior ya vale la pena. Paseo de Gràcia con las tres casas de Gaudí, Domènech y Puig es gratis.</div>
+        <div class="act-price">Exterior gratis · entrada €35</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Mercado de La Boqueria</div>
+        <div class="act-detail">Ir temprano (9-11h) antes de los grupos turísticos. Frutas, jamón, quesos, y los mejores zumos de naranja del mundo.</div>
+        <div class="act-price">Gratis entrar · La Rambla, 91</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Barrio Gótico</div>
+        <div class="act-detail">El casco medieval mejor conservado de España. Catedral, Plaça Reial, Call (barrio judío medieval). Media jornada mínimo.</div>
+        <div class="act-price">Libre · imprescindible</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Barceloneta · Playa</div>
+        <div class="act-detail">La playa urbana más icónica de España. En julio, llegar antes de las 10h para encontrar sitio. Chiringuitos a todo el día.</div>
+        <div class="act-price">Libre · metro L4 Barceloneta</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Montjuïc + Castillo</div>
+        <div class="act-detail">Vistas de 360° sobre la ciudad, el mar y el puerto. Teleférico opcional. Tarde perfecta con puesta de sol.</div>
+        <div class="act-price">Castillo €9.50 · teleférico €13.40</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Camp Nou · Tour</div>
+        <div class="act-detail">El estadio del FC Barcelona, uno de los más grandes del mundo. Para los chicos de 20 y 21 especialmente.</div>
+        <div class="act-price">~€28 · fcbarcelona.com</div>
+      </div>
+    </div>
+  </div>
+  <div class="chicos-box">
+    <div class="chicos-title">Para los chicos (21, 20, 14 años)</div>
+    <div class="chicos-grid">
+      <div class="chicos-item"><div class="chicos-item-title">🛍 Portal de l'Àngel</div><div class="chicos-item-desc">Zara, H&M, Nike, Adidas. La calle peatonal de shopping masivo. Perfecta para el de 14.</div></div>
+      <div class="chicos-item"><div class="chicos-item-title">🧢 El Raval / MACBA</div><div class="chicos-item-desc">Cultura skate, streetwear independiente, tiendas de vinilo y arte urbano. El barrio más cool de BCN.</div></div>
+      <div class="chicos-item"><div class="chicos-item-title">👔 El Born</div><div class="chicos-item-desc">Boutiques de diseño, moda española independiente, cafés con rooftop. Para los de 20 y 21.</div></div>
+      <div class="chicos-item"><div class="chicos-item-title">🌙 Noche · Barceloneta</div><div class="chicos-item-desc">Chiringuitos hasta las 3am, clubs en el puerto Olímpico. Para los mayores de edad.</div></div>
+      <div class="chicos-item"><div class="chicos-item-title">🎮 Poblenou / Rambla del Poblenou</div><div class="chicos-item-desc">El barrio más joven de BCN. Heladerías, cervecerías artesanales, ambiente sin turistas.</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-eyebrow">Excursiones desde Barcelona</div>
+    <div class="exc-band">
+      <div class="exc-card">
+        <div class="exc-title">Cadaqués · Costa Brava</div>
+        <div class="exc-dist">180 km · 2h 15min · AP-7 + C-31</div>
+        <div class="exc-desc">El pueblo más bonito de España según muchos. Casa-Museu Dalí en Portlligat, Cap de Creus, calas de aguas cristalinas. Reservar Dalí online.</div>
+      </div>
+      <div class="exc-card">
+        <div class="exc-title">Tarragona</div>
+        <div class="exc-dist">100 km · 1h · AP-7</div>
+        <div class="exc-desc">La ciudad romana mejor conservada de España. Anfiteatro junto al mar, circo romano, murallas del s.II a.C. Todo en el centro histórico.</div>
+      </div>
+      <div class="exc-card">
+        <div class="exc-title">Montserrat</div>
+        <div class="exc-dist">60 km · 1h · A-2</div>
+        <div class="exc-desc">Montaña de roca única en el mundo. Monasterio benedictino, vistas inmensas y senderismo. A 15 min de El Bruc — si tienen tiempo el día 22 al llegar.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="drive-footer">
+  <div><div class="drive-footer-label">Siguiente destino</div><div class="drive-footer-val">Valencia · Ruzafa</div><div class="drive-footer-route">AP-7 · 350 km · 3h 30min · 30 junio</div></div>
+  <button class="nav-btn" onclick="goPage('valencia')" style="background:var(--terra);color:#fff;border-radius:2px;padding:10px 20px;font-size:12px">Valencia →</button>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     VALENCIA
+══════════════════════════════════════════ -->
+<div id="valencia" class="page">
+<div class="dest-hero">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px">
+    <div>
+      <div class="dest-eyebrow">Etapa 3 · 30 jun – 4 julio</div>
+      <div class="dest-city"><em>Valencia</em></div>
+      <div class="dest-meta-row">
+        <div class="dest-meta"><span class="dest-meta-label">Noches</span><span class="dest-meta-val">5 noches</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Barrio</span><span class="dest-meta-val">Ruzafa</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Excursión</span><span class="dest-meta-val">Alicante (170 km)</span></div>
+      </div>
+    </div>
+    <div class="dest-drive"><div class="dest-drive-km">350 km</div><div class="dest-drive-route">Barcelona → Valencia · AP-7 · 3h 30min</div></div>
+  </div>
+</div>
+<div class="dest-body">
+  <p class="dest-desc">Valencia es la tercera ciudad de España y la que mejor vive. <strong>Ruzafa</strong> es el barrio del momento en toda España — terrazas con diseño, restaurantes creativos, cafés de especialidad y una vida de barrio auténtica que los chicos van a disfrutar mucho. La ciudad tiene además la joya arquitectónica de la <strong>Ciudad de las Artes y las Ciencias</strong> y el mercado cubierto más bonito de Europa. Y la paella nació aquí — hay que comerla en el lugar correcto.</p>
+  <div>
+    <div class="section-eyebrow">Qué hacer</div>
+    <div class="act-grid">
+      <div class="act-card must">
+        <div class="act-tag tag-must">IMPRESCINDIBLE</div>
+        <div class="act-name">Ciudad de las Artes y Ciencias</div>
+        <div class="act-detail">El complejo de Calatrava. Oceanogràfic (el más grande de Europa), Museu de les Ciències, IMAX. Espectacular de noche también.</div>
+        <div class="act-price">€38 combo / €32 solo Oceanogràfic</div>
+      </div>
+      <div class="act-card must">
+        <div class="act-tag tag-must">IMPRESCINDIBLE</div>
+        <div class="act-name">Mercado Central</div>
+        <div class="act-detail">El mercado cubierto Art Nouveau más grande de Europa. Ir a las 10h. Frutas, especias, embutidos valencianos. Junto a La Lonja (UNESCO).</div>
+        <div class="act-price">Gratis · solo mañanas</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">La Lonja de la Seda</div>
+        <div class="act-detail">Patrimonio UNESCO. Gótico civil del s.XV. El edificio medieval más impresionante de Valencia y uno de los mejores de España.</div>
+        <div class="act-price">€2 · frente al Mercado Central</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Paella en La Albufera</div>
+        <div class="act-detail">El lago donde nació la paella. Ir al pueblo de El Palmar — ahí la paella es auténtica, no la versión turística. Recomendado: Restaurante La Matandeta.</div>
+        <div class="act-price">~€20–25/pers · 20 min del centro</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Barrio del Carmen</div>
+        <div class="act-detail">El casco histórico valenciano. Arte urbano, bares de tapas, Museo de Bellas Artes (gratis). El barrio más vivo de la ciudad antigua.</div>
+        <div class="act-price">Libre · imprescindible</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Jardín del Turia</div>
+        <div class="act-detail">Un río convertido en parque lineal de 9 km. Bicicleta, running, picnic. El pulmón verde más inusual de España.</div>
+        <div class="act-price">Gratis · alquiler bici ~€5h</div>
+      </div>
+    </div>
+  </div>
+  <div class="chicos-box">
+    <div class="chicos-title">Para los chicos — Ruzafa y más</div>
+    <div class="chicos-grid">
+      <div class="chicos-item"><div class="chicos-item-title">☕ Ruzafa de día</div><div class="chicos-item-desc">Cafés de especialidad, brunch con cola de una hora (buena señal), tiendas vintage en Calle Cádiz.</div></div>
+      <div class="chicos-item"><div class="chicos-item-title">🌙 Ruzafa de noche</div><div class="chicos-item-desc">El barrio más de moda de España ahora mismo. Terrazas hasta las 4am sin tener que desplazarse.</div></div>
+      <div class="chicos-item"><div class="chicos-item-title">🏖 Playa Malvarrosa</div><div class="chicos-item-desc">La playa de Valencia, 20 min en metro. Chiringuitos, voley playa, ambiente joven en julio.</div></div>
+      <div class="chicos-item"><div class="chicos-item-title">🛍 Calle Colón</div><div class="chicos-item-desc">Shopping mainstream: Zara, Pull&Bear, Massimo Dutti. Para el de 14.</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-eyebrow">Excursión · Alicante</div>
+    <div class="exc-band">
+      <div class="exc-card">
+        <div class="exc-title">Alicante</div>
+        <div class="exc-dist">170 km · 1h 45min · AP-7</div>
+        <div class="exc-desc">Castillo de Santa Bárbara (gratis, ascensor €2.70), Explanada de España con su mosaico de mármol, Barrio de Santa Cruz, MARQ (€3). Medio día perfecto. Luego puede quedarse en Cartagena esa noche.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="drive-footer">
+  <div><div class="drive-footer-label">Siguiente destino</div><div class="drive-footer-val">Cartagena · vía Alicante</div><div class="drive-footer-route">AP-7 · 260 km · 2h 45min · 5 julio</div></div>
+  <button class="nav-btn" onclick="goPage('cartagena')" style="background:var(--terra);color:#fff;border-radius:2px;padding:10px 20px;font-size:12px">Cartagena →</button>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     CARTAGENA
+══════════════════════════════════════════ -->
+<div id="cartagena" class="page">
+<div class="dest-hero">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px">
+    <div>
+      <div class="dest-eyebrow">Etapa 4 · 5–6 julio</div>
+      <div class="dest-city"><em>Cartagena</em></div>
+      <div class="dest-meta-row">
+        <div class="dest-meta"><span class="dest-meta-label">Noches</span><span class="dest-meta-val">2 noches</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Zona</span><span class="dest-meta-val">Centro Histórico</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Parada en ruta</span><span class="dest-meta-val">Alicante (llegada)</span></div>
+      </div>
+    </div>
+    <div class="dest-drive"><div class="dest-drive-km">260 km</div><div class="dest-drive-route">Valencia → Cartagena · vía Alicante · AP-7</div></div>
+  </div>
+</div>
+<div class="dest-body">
+  <p class="dest-desc">Cartagena es una de las ciudades más antiguas de España — fundada por los cartagineses en el s.III a.C. y convertida luego en puerto estratégico del Imperio Romano. Su <strong>Teatro Romano</strong>, redescubierto en 1988, es uno de los mejor conservados de la Península. La ciudad tiene además acceso directo a las playas del <strong>Mar Menor</strong> y a <strong>La Manga</strong>, una franja de tierra de 22 km entre el mar abierto y la laguna más grande de España.</p>
+  <div>
+    <div class="section-eyebrow">Qué hacer</div>
+    <div class="act-grid">
+      <div class="act-card must">
+        <div class="act-tag tag-must">IMPRESCINDIBLE</div>
+        <div class="act-name">Teatro Romano de Cartagena</div>
+        <div class="act-detail">Uno de los teatros romanos mejor conservados de España. Museo moderno integrado que explica la historia de la ciudad desde el exterior hasta la escena.</div>
+        <div class="act-price">€6 · +34 968 50 04 15</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">ARQUA · Arqueología Subacuática</div>
+        <div class="act-detail">El único museo de arqueología subacuática de España. Tesoros recuperados del fondo del Mediterráneo. Único en el mundo en su género.</div>
+        <div class="act-price">€3 · +34 968 12 11 66</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Muralla Púnica · s.III a.C.</div>
+        <div class="act-detail">Los restos de la muralla cartaginesa original, 2,300 años de historia a flor de tierra. Junto al teatro romano.</div>
+        <div class="act-price">€4</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Cabo de Palos</div>
+        <div class="act-detail">El faro más famoso del Mediterráneo español. Marisquerías con las mejores gambas de la región. 20 min en coche.</div>
+        <div class="act-price">Libre · comer ~€20–30/pers</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">La Manga · Mar Menor</div>
+        <div class="act-detail">22 km de franja entre la laguna más cálida de España (28°C en julio) y el Mediterráneo. Windsurf, kayak, snorkel. Para los chicos.</div>
+        <div class="act-price">Libre · 30 min en coche</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="drive-footer">
+  <div><div class="drive-footer-label">Siguiente destino</div><div class="drive-footer-val">Málaga · vía Cabo de Gata</div><div class="drive-footer-route">N-332 + A-7 · 375 km · 4h 30min · 7 julio</div></div>
+  <button class="nav-btn" onclick="goPage('malaga')" style="background:var(--terra);color:#fff;border-radius:2px;padding:10px 20px;font-size:12px">Málaga →</button>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MÁLAGA
+══════════════════════════════════════════ -->
+<div id="malaga" class="page">
+<div class="dest-hero">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px">
+    <div>
+      <div class="dest-eyebrow">Etapa 5 · 7–13 julio</div>
+      <div class="dest-city"><em>Málaga</em></div>
+      <div class="dest-meta-row">
+        <div class="dest-meta"><span class="dest-meta-label">Noches</span><span class="dest-meta-val">7 noches</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Barrio</span><span class="dest-meta-val">Soho / Centro Histórico</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Parada en ruta</span><span class="dest-meta-val">Cabo de Gata</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Excursiones</span><span class="dest-meta-val">Nerja · Ronda</span></div>
+      </div>
+    </div>
+    <div class="dest-drive"><div class="dest-drive-km">375 km</div><div class="dest-drive-route">Cartagena → Cabo Gata → Málaga · A-7 · 4h 30min</div></div>
+  </div>
+</div>
+<div class="dest-body">
+  <p class="dest-desc">Málaga ha experimentado una transformación impresionante en la última década. La ciudad natal de <strong>Picasso</strong> es hoy un destino cultural de primer nivel — más de 40 museos, un barrio de arte urbano (<strong>Soho</strong>) que rivaliza con los mejores de Europa, y una gastronomía que combina lo andaluz con la creatividad contemporánea. El paseo entre la <strong>Alcazaba</strong>, el puerto y el Mercado de Atarazanas se puede hacer en un día, pero la ciudad da para mucho más.</p>
+  <div>
+    <div class="section-eyebrow">Parada en ruta · Cabo de Gata</div>
+    <div class="exc-band">
+      <div class="exc-card">
+        <div class="exc-title">⚠️ Salir de Cartagena a las 7:00h</div>
+        <div class="exc-dist">Cartagena → San José: 175 km · 2h</div>
+        <div class="exc-desc">Llegar a San José a las 9-10h. 3-4 horas de playa (Los Muertos o Mónsul). Almuerzo en Las Negras o San José. Salir a las 14h hacia Málaga (200 km · 2h más).</div>
+      </div>
+      <div class="exc-card">
+        <div class="exc-title">Playa de los Muertos</div>
+        <div class="exc-dist">20 min a pie desde parking</div>
+        <div class="exc-desc">La playa más espectacular de España continental. Piedras blancas, agua turquesa, sin chiringuitos. Llevar agua y comida propia.</div>
+      </div>
+      <div class="exc-card">
+        <div class="exc-title">Playa de Mónsul</div>
+        <div class="exc-dist">10 min en coche desde San José</div>
+        <div class="exc-desc">Dunas volcánicas negras junto al mar azul. La más fotogénica del parque. En julio hay lanzadera — dejar coche en el aparcamiento.</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="section-eyebrow">Qué hacer en Málaga</div>
+    <div class="act-grid">
+      <div class="act-card must">
+        <div class="act-tag tag-must">IMPRESCINDIBLE</div>
+        <div class="act-name">Alcazaba + Castillo Gibralfaro</div>
+        <div class="act-detail">La fortaleza árabe del s.XI con vistas al mar, conectada al castillo medieval por una muralla. El mirador más espectacular de Málaga.</div>
+        <div class="act-price">Combo €5.50 · +34 952 22 72 30</div>
+      </div>
+      <div class="act-card must">
+        <div class="act-tag tag-must">IMPRESCINDIBLE</div>
+        <div class="act-name">Museo Picasso Málaga</div>
+        <div class="act-detail">204 obras en el palacio del s.XVI donde nació la familia Picasso. Colección que abarca toda su trayectoria. Gratis domingos 18-21h.</div>
+        <div class="act-price">€12 / gratis dom 18–21h · +34 902 44 33 77</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Barrio de Soho</div>
+        <div class="act-detail">Arte urbano de nivel mundial — murales de Shepard Fairey, Okuda, ROA. Galerías de diseño, restaurantes creativos, ambiente joven.</div>
+        <div class="act-price">Libre · entre el centro y el puerto</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Mercado Atarazanas</div>
+        <div class="act-detail">Mercado árabe medieval reconvertido. Vidriera modernista impresionante. Los mejores boquerones fritos del mundo están aquí.</div>
+        <div class="act-price">Gratis · solo mañanas</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Espetos de sardinas · El Palo</div>
+        <div class="act-detail">Comer sardinas asadas en cañas de bambú en los chiringuitos de la playa de El Palo. La experiencia gastronómica más auténtica de Málaga.</div>
+        <div class="act-price">~€12–15/pers · barrio El Palo · 10 min</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Centro Pompidou Málaga</div>
+        <div class="act-detail">Sede del Pompidou de París en el Muelle Uno. Colección permanente de arte moderno y exposiciones temporales de alto nivel.</div>
+        <div class="act-price">€9 / gratis vie 16–20h</div>
+      </div>
+    </div>
+  </div>
+  <div class="chicos-box">
+    <div class="chicos-title">Para los chicos en Málaga</div>
+    <div class="chicos-grid">
+      <div class="chicos-item"><div class="chicos-item-title">🛍 Calle Marqués de Larios</div><div class="chicos-item-desc">La calle peatonal más lujosa de Málaga. Zara, Mango, Springfield. Para el de 14.</div></div>
+      <div class="chicos-item"><div class="chicos-item-title">🌙 Plaza de la Merced · noche</div><div class="chicos-item-desc">La plaza donde nació Picasso. Bares de copas hasta tarde. El epicentro nocturno del centro histórico.</div></div>
+      <div class="chicos-item"><div class="chicos-item-title">🏄 Playa de la Malagueta</div><div class="chicos-item-desc">La playa urbana de Málaga. A 15 min a pie del centro. Voleibol, pádel acuático, chiringuitos.</div></div>
+      <div class="chicos-item"><div class="chicos-item-title">🎨 Soho street art</div><div class="chicos-item-desc">El barrio con el arte urbano más impresionante de España. Una tarde entera de fotografías.</div></div>
+    </div>
+  </div>
+  <div>
+    <div class="section-eyebrow">Excursiones desde Málaga</div>
+    <div class="exc-band">
+      <div class="exc-card">
+        <div class="exc-title">Nerja</div>
+        <div class="exc-dist">55 km · 45 min · A-7</div>
+        <div class="exc-desc">El Balcón de Europa, las Cuevas de Nerja (reservar online, €12.50) y la playa de Burriana. Subir 15 min al pueblo blanco de Frigiliana. Día completo.</div>
+      </div>
+      <div class="exc-card">
+        <div class="exc-title">Ronda</div>
+        <div class="exc-dist">110 km · 1h 15min · A-357</div>
+        <div class="exc-desc">El Puente Nuevo sobre el Tajo — uno de los paisajes más dramáticos de España. Plaza de toros más antigua del mundo (1785). Hemingway la adoraba. No tiene pérdida.</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="drive-footer">
+  <div><div class="drive-footer-label">Siguiente destino</div><div class="drive-footer-val">Granada · Realejo</div><div class="drive-footer-route">A-45 · 130 km · 1h 30min · 14 julio</div></div>
+  <button class="nav-btn" onclick="goPage('granada')" style="background:var(--terra);color:#fff;border-radius:2px;padding:10px 20px;font-size:12px">Granada →</button>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     GRANADA
+══════════════════════════════════════════ -->
+<div id="granada" class="page">
+<div class="dest-hero">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px">
+    <div>
+      <div class="dest-eyebrow">Etapa 6 · 14–17 julio</div>
+      <div class="dest-city"><em>Granada</em></div>
+      <div class="dest-meta-row">
+        <div class="dest-meta"><span class="dest-meta-label">Noches</span><span class="dest-meta-val">4 noches</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Barrio</span><span class="dest-meta-val">Realejo</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">🔴 URGENTE</span><span class="dest-meta-val">Reservar Alhambra YA</span></div>
+      </div>
+    </div>
+    <div class="dest-drive"><div class="dest-drive-km">130 km</div><div class="dest-drive-route">Málaga → Granada · A-45 · 1h 30min</div></div>
+  </div>
+</div>
+<div class="dest-body">
+  <p class="dest-desc">Granada es quizás la ciudad más emocionalmente intensa de España. La <strong>Alhambra</strong> — el palacio nazarí que los Reyes Católicos no se atrevieron a destruir — es el monumento más visitado del país y uno de los más bellos del mundo. El <strong>Albaicín</strong>, el barrio árabe medieval declarado Patrimonio UNESCO, trepa la colina frente a la Alhambra con una maraña de callejuelas blancas. Y en ninguna otra ciudad de España las tapas son <strong>gratuitas</strong> con cada bebida — una tradición que hace que salir de noche cueste poco y dure mucho.</p>
+  <div>
+    <div class="section-eyebrow">🔴 Reservar Alhambra AHORA</div>
+    <div class="act-grid">
+      <div class="act-card must">
+        <div class="act-tag tag-must">URGENTE · julio agotado</div>
+        <div class="act-name">La Alhambra + Generalife + Alcazaba</div>
+        <div class="act-detail">tickets.alhambra-patronato.es. Los cupos de julio se agotan con meses de anticipación. Sin reserva previa no hay acceso. Es el monumento más visitado de España. Dedicar un día completo (5-6h mínimo).</div>
+        <div class="act-price">€19 adulto · +34 858 53 79 00</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="section-eyebrow">Qué hacer</div>
+    <div class="act-grid">
+      <div class="act-card must">
+        <div class="act-tag tag-must">IMPRESCINDIBLE</div>
+        <div class="act-name">Albaicín · barrio árabe</div>
+        <div class="act-detail">UNESCO. Callejuelas de cal blanca, tea houses (teterías), vistas a la Alhambra. Subir hasta el Mirador San Nicolás al atardecer: la mejor postal de España.</div>
+        <div class="act-price">Libre · mejor 17–20h</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Sacromonte · Flamenco en cueva</div>
+        <div class="act-detail">Las cuevas del barrio gitano con espectáculo de flamenco en vivo. La experiencia más auténtica y primitiva del flamenco. Reservar.</div>
+        <div class="act-price">€25–35/pers · +34 958 22 45 25</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Capilla Real · Tumbas Reyes Católicos</div>
+        <div class="act-detail">Fernando e Isabel enterrados aquí. Los mismos que financiaron el viaje de Colón. Joyería medieval, corona y cetro originales.</div>
+        <div class="act-price">€5 · +34 958 22 78 48</div>
+      </div>
+      <div class="act-card free">
+        <div class="act-tag tag-free">TRADICIÓN ÚNICA</div>
+        <div class="act-name">Tapas gratis · calle Navas</div>
+        <div class="act-detail">En Granada cada bebida viene con una tapa gratis — y a cada ronda la tapa es más grande. 4 personas pueden cenar bien por €40–50 total. Ir por la Calle Navas o el Albaicín.</div>
+        <div class="act-price">Tapa incluida con cada consumición</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">El Bañuelo · Baños árabes s.XI</div>
+        <div class="act-detail">Los baños árabes mejor conservados de España. Luz que entra por estrellas en el techo abovedado. Solo 15 minutos de visita pero imprescindible.</div>
+        <div class="act-price">Gratis</div>
+      </div>
+    </div>
+  </div>
+  <div class="chicos-box">
+    <div class="chicos-title">Para los chicos en Granada</div>
+    <div class="chicos-grid">
+      <div class="chicos-item"><div class="chicos-item-title">🍵 Teterías del Albaicín</div><div class="chicos-item-desc">Cultura marroquí en el corazón de Andalucía. Té con pasteles de miel, narguile, ambiente único en España.</div></div>
+      <div class="chicos-item"><div class="chicos-item-title">🌙 Noche de tapas</div><div class="chicos-item-desc">El plan más económico de todo el viaje y el más divertido. Calle Navas, Plaza Nueva, Campo del Príncipe.</div></div>
+      <div class="chicos-item"><div class="chicos-item-title">👟 Calle Mesones</div><div class="chicos-item-desc">Shopping accesible: moda española, tiendas de artesanía, zapatería. Para el de 14.</div></div>
+    </div>
+  </div>
+</div>
+<div class="drive-footer">
+  <div><div class="drive-footer-label">Siguiente destino</div><div class="drive-footer-val">Madrid · Malasaña / Chueca</div><div class="drive-footer-route">A-44 + A-4 · 430 km · 4h · 18 julio</div></div>
+  <button class="nav-btn" onclick="goPage('madrid')" style="background:var(--terra);color:#fff;border-radius:2px;padding:10px 20px;font-size:12px">Madrid →</button>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MADRID
+══════════════════════════════════════════ -->
+<div id="madrid" class="page">
+<div class="dest-hero">
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:16px">
+    <div>
+      <div class="dest-eyebrow">Etapa 7 · 18–22 julio · Final</div>
+      <div class="dest-city"><em>Madrid</em></div>
+      <div class="dest-meta-row">
+        <div class="dest-meta"><span class="dest-meta-label">Noches</span><span class="dest-meta-val">5 noches</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Barrio</span><span class="dest-meta-val">Malasaña o Chueca</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Vuelo regreso</span><span class="dest-meta-val">23 jul · Bogotá</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Coche</span><span class="dest-meta-val">Dejar en T4 al llegar el 18</span></div>
+      </div>
+    </div>
+    <div class="dest-drive"><div class="dest-drive-km">430 km</div><div class="dest-drive-route">Granada → Madrid · A-44 + A-4 · 4h</div></div>
+  </div>
+</div>
+<div class="dest-body">
+  <p class="dest-desc">Madrid es la ciudad más contradictoria de España: la capital política con la mejor colección de arte del mundo, el barrio más castizo con las tiendas más modernas, la institución más formal con la noche más larga de Europa. <strong>Malasaña</strong> — el barrio de la Movida de los 80 — hoy es el más vibrante de Madrid: tiendas independientes, restaurantes de todas las cocinas, y vida nocturna que los chicos van a aprovechar. El <strong>Museo del Prado</strong> es la razón por la que Madrid está en el circuito cultural mundial. Madrid es el broche perfecto para cerrar el viaje.</p>
+  <div>
+    <div class="section-eyebrow">Plan sugerido · 5 días</div>
+    <div class="act-grid">
+      <div class="act-card" style="border-left:3px solid var(--gold)">
+        <div class="act-name">Día 1 · 18 jul — Llegada</div>
+        <div class="act-detail">Dejar coche en T4 · metro línea 8 al centro. Tarde: Parque del Retiro (lago, barca, Palacio de Cristal). Noche: 🎹 Piano Bar Tonny 2.</div>
+        <div class="act-price">Retiro gratis · barca €7 · Tonny 2: +34 915 42 23 28</div>
+      </div>
+      <div class="act-card" style="border-left:3px solid var(--gold)">
+        <div class="act-name">Día 2 · 19 jul — Arte + Serrano</div>
+        <div class="act-detail">Mañana: Museo del Prado (gratis lunes 18-20h si cae en lunes). Tarde: 🛍 Shopping Calle Serrano y Barrio Salamanca. Noche libre Malasaña.</div>
+        <div class="act-price">Prado €22 · Serrano gratis</div>
+      </div>
+      <div class="act-card" style="border-left:3px solid var(--gold)">
+        <div class="act-name">Día 3 · 20 jul — Excursión Toledo</div>
+        <div class="act-detail">Toledo en un día: Catedral (€12.50), Alcázar (€5), San Juan de los Reyes (€2.80), Mirador del Valle al atardecer. Vuelta a Madrid a cenar.</div>
+        <div class="act-price">75 km · 45 min · A-42</div>
+      </div>
+      <div class="act-card" style="border-left:3px solid var(--gold)">
+        <div class="act-name">Día 4 · 21 jul — Palacio + Flamenco</div>
+        <div class="act-detail">Mañana: Palacio Real + Plaza Mayor + Mercado San Miguel. Noche: 🎭 Corral de la Morería — cena + show de flamenco. El mejor tablao del mundo.</div>
+        <div class="act-price">Palacio €14 · Corral: €85–110/pers · +34 913 65 84 46</div>
+      </div>
+      <div class="act-card" style="border-left:3px solid var(--gold)">
+        <div class="act-name">Día 5 · 22 jul — Tour Bernabéu + despedida</div>
+        <div class="act-detail">Tour estadio Santiago Bernabéu (nuevo, inmersivo). Tarde libre Malasaña o Chueca. Última cena en Madrid. 23 jul: vuelo a Bogotá.</div>
+        <div class="act-price">Bernabéu €25 · bernabeu.realmadrid.com</div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="section-eyebrow">Imprescindibles de Madrid</div>
+    <div class="act-grid">
+      <div class="act-card must">
+        <div class="act-tag tag-must">MUST</div>
+        <div class="act-name">Museo del Prado</div>
+        <div class="act-detail">La colección más importante de pintura europea del mundo: Velázquez, Goya, El Bosco, Rubens, Tiziano. Reservar hora de entrada.</div>
+        <div class="act-price">€22 / gratis lun 18–20h · +34 913 30 28 00</div>
+      </div>
+      <div class="act-card must">
+        <div class="act-tag tag-must">PLAN GIOVANNI</div>
+        <div class="act-name">🎭 Corral de la Morería</div>
+        <div class="act-detail">El tablao de flamenco más prestigioso del mundo (estrella Michelin). Artistas de primer nivel internacional. Reservar con semanas de anticipación.</div>
+        <div class="act-price">Cena+show €85–110 · solo show €55 · corraldelamoreria.com</div>
+      </div>
+      <div class="act-card must">
+        <div class="act-tag tag-must">PLAN GIOVANNI</div>
+        <div class="act-name">🎹 Piano Bar Tonny 2</div>
+        <div class="act-detail">El piano bar más clásico de Madrid. Ambiente íntimo y elegante. Ideal la noche de llegada para aterrizar en el ritmo de la capital.</div>
+        <div class="act-price">Consumición ~€10–15 · +34 915 42 23 28</div>
+      </div>
+      <div class="act-card must">
+        <div class="act-tag tag-must">PLAN GIOVANNI</div>
+        <div class="act-name">🛍 Calle Serrano · Barrio Salamanca</div>
+        <div class="act-detail">Loewe, Adolfo Domínguez, Massimo Dutti, El Corte Inglés Goya. El shopping más elegante de Madrid.</div>
+        <div class="act-price">Libre · metro Serrano (L4)</div>
+      </div>
+      <div class="act-card must">
+        <div class="act-tag tag-must">PLAN GIOVANNI</div>
+        <div class="act-name">🌳 Parque del Retiro</div>
+        <div class="act-detail">El pulmón de Madrid. Paseo en barca por el lago, Palacio de Cristal, Rosaleda. Cualquier tarde con buen tiempo.</div>
+        <div class="act-price">Gratis · barca €7</div>
+      </div>
+      <div class="act-card">
+        <div class="act-name">Palacio Real</div>
+        <div class="act-detail">El palacio real habitado más grande de Europa. 3,000 habitaciones (visita 50). Las colecciones de armería y pinacoteca son excepcionalmente buenas.</div>
+        <div class="act-price">€14 · +34 914 54 87 00</div>
+      </div>
+    </div>
+  </div>
+  <div class="chicos-box">
+    <div class="chicos-title">Para los chicos en Madrid</div>
+    <div class="chicos-grid">
+      <div class="chicos-item"><div class="chicos-item-title">🛍 Malasaña · tiendas</div><div class="chicos-item-desc">Vintage, streetwear, discos de vinilo, skateshops. El barrio más cool de Madrid para los de 20 y 21.</div></div>
+      <div class="chicos-item"><div class="chicos-item-title">🛍 Gran Vía</div><div class="chicos-item-desc">Zara flagship, Nike, H&M, Pull&Bear. Para el de 14. La avenida comercial más famosa de España.</div></div>
+      <div class="chicos-item"><div class="chicos-item-title">⚽ Tour Bernabéu</div><div class="chicos-item-desc">El nuevo tour inmersivo del estadio más famoso del mundo. Para los tres chicos.</div></div>
+      <div class="chicos-item"><div class="chicos-item-title">🌙 Chueca · La Latina</div><div class="chicos-item-desc">La Latina los domingos (tapas + El Rastro). Chueca de noche para los mayores. La noche madrileña empieza a las 23h.</div></div>
+    </div>
+  </div>
+</div>
+<div class="drive-footer">
+  <div><div class="drive-footer-label">23 julio</div><div class="drive-footer-val">✈️ Vuelo Madrid → Bogotá</div><div class="drive-footer-route">Dejar coche en T4 · Hasta la próxima aventura</div></div>
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     RESERVAS
+══════════════════════════════════════════ -->
+<div id="reservas" class="page">
+<div class="res-wrap">
+  <div class="p-eyebrow">Gestión del viaje</div>
+  <div class="res-title">Reservas <em>Pendientes</em></div>
+
+  <!-- VUELOS CONFIRMADOS -->
+  <div style="margin-top:24px;margin-bottom:8px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--terra);font-weight:600">✅ Vuelos Confirmados</div>
+  <div style="background:var(--navy);border-radius:3px;padding:20px 24px;border-left:4px solid var(--olive);margin-bottom:8px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:16px">
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">✈️ Air Canada · Booking B4ZIUB</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.5)">Emitido 06 mayo 2026 · USD $4,563.60 · Visa ••••1413</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.08);padding:8px 14px;border-radius:2px;font-size:11px;color:rgba(255,255,255,0.7)">Economy Standard · 3 Adultos + 1 Youth</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+      <div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Ida · 21 junio 2026</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.8);line-height:1.8">
+          <strong style="color:#fff">BOG → YYZ</strong> · AC 95 · 09:00 → 16:00<br>
+          <strong style="color:#fff">YYZ → MAD</strong> · AC 824 · 19:15 → 08:50+1<br>
+          <span style="color:rgba(255,255,255,0.4);font-size:11px">Aterriza Madrid T1 · 22 junio 08:50h</span>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Regreso · 23 julio 2026</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.8);line-height:1.8">
+          <strong style="color:#fff">MAD → YUL</strong> · AC 835 · 12:45 → 14:55<br>
+          <strong style="color:#fff">YUL → BOG</strong> · AC 98 · 22:55 → 04:05+1<br>
+          <span style="color:rgba(255,255,255,0.4);font-size:11px">Sale Madrid T1 · 23 jul 12:45h</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08)">
+      <div style="font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:8px">Pasajeros · Tickets</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px;font-size:11px;color:rgba(255,255,255,0.6)">
+        <div>Julio Giovany Robles · #0142326738922<br><span style="color:rgba(255,255,255,0.35)">Aeroplan #996964680</span></div>
+        <div>Samuel Robles · #0142326738923</div>
+        <div>Sara Robles · #0142326738920</div>
+        <div>Tomas Robles · #0142326738921</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08);display:flex;flex-wrap:wrap;gap:16px;font-size:11px;color:rgba(255,255,255,0.5)">
+      <div>🧳 <strong style="color:rgba(255,255,255,0.7)">Maleta gratis</strong> · 23 kg / persona (ida y vuelta)</div>
+      <div>🔄 <strong style="color:rgba(255,255,255,0.7)">Cambios:</strong> USD $110/tramo/pax + diferencia</div>
+      <div>❌ <strong style="color:rgba(255,255,255,0.7)">No reembolsable</strong> · cancelar mín. 45 min antes</div>
+    </div>
+  </div>
+
+  <!-- ALHAMBRA CONFIRMADA -->
+  <div style="margin-top:12px;margin-bottom:8px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--terra);font-weight:600">✅ Alhambra Confirmada</div>
+  <div style="background:var(--navy);border-radius:3px;padding:20px 24px;border-left:4px solid var(--olive);margin-bottom:16px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:14px">
+      <div>
+        <div style="font-size:11px;font-weight:600;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">🏰 Alhambra General · Pedido 1743090MHPJB</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.5)">Titular: Julio Robles · grobles@ibpla.com</div>
+      </div>
+      <div style="background:rgba(196,88,58,0.25);border:1px solid var(--terra);padding:8px 14px;border-radius:2px;text-align:center">
+        <div style="font-size:16px;font-weight:700;color:#fff">18 jul 2026</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.5)">⚠️ Ver nota logística</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px">
+      <div style="background:rgba(255,255,255,0.06);border-radius:2px;padding:10px 12px">
+        <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Palacios Nazaríes</div>
+        <div style="font-size:20px;font-weight:700;color:#fff">09:00h</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.4)">HORA VINCULANTE · no cambia</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.06);border-radius:2px;padding:10px 12px">
+        <div style="font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:4px">Alcazaba + Partal + Generalife</div>
+        <div style="font-size:20px;font-weight:700;color:#fff">08:30h</div>
+        <div style="font-size:10px;color:rgba(255,255,255,0.4)">Libre hasta 20:00h cierre</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px;font-size:11px;margin-bottom:14px">
+      <div style="background:rgba(255,255,255,0.05);padding:8px 12px;border-radius:2px">
+        <div style="color:rgba(255,255,255,0.35);margin-bottom:2px">Julio ROBLES · Adulto</div>
+        <div style="color:rgba(255,255,255,0.85);font-weight:500">H0MHPJB/1 · €21.00 · DNI BA240244</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);padding:8px 12px;border-radius:2px">
+        <div style="color:rgba(255,255,255,0.35);margin-bottom:2px">Samuel ROBLES · Adulto</div>
+        <div style="color:rgba(255,255,255,0.85);font-weight:500">H0MHPJB/2 · €21.00 · DNI BA245673</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);padding:8px 12px;border-radius:2px">
+        <div style="color:rgba(255,255,255,0.35);margin-bottom:2px">Sara ROBLES · Adulto</div>
+        <div style="color:rgba(255,255,255,0.85);font-weight:500">H0MHPJB/3 · €21.00 · DNI BE719845</div>
+      </div>
+      <div style="background:rgba(255,255,255,0.05);padding:8px 12px;border-radius:2px">
+        <div style="color:rgba(255,255,255,0.35);margin-bottom:2px">Tomas ROBLES · Menor 12–15</div>
+        <div style="color:rgba(255,255,255,0.85);font-weight:500">H0MHPJB/4 · €14.00 · DNI BA240240</div>
+      </div>
+    </div>
+    <div style="background:rgba(196,88,58,0.18);border:1px solid rgba(196,88,58,0.4);border-radius:2px;padding:12px 14px;font-size:12px;color:rgba(255,255,255,0.85);line-height:1.6;margin-bottom:10px">
+      ⚠️ <strong style="color:var(--terra)">NOTA LOGÍSTICA:</strong> El 18 jul es día de salida Granada → Madrid (430 km · 4h). Plan: entrar Alhambra 08:30h · Nazaríes 09:00h · salir ~13:30h · llegar Madrid ~17:30h. Día exigente pero factible.
+    </div>
+    <div style="font-size:11px;color:rgba(255,255,255,0.4);line-height:1.8">
+      📋 Pasaporte ORIGINAL obligatorio · Mochilas máx. 40×40 cm · Sin selfie stick ni flash en Nazaríes · Calzado plano recomendado
+    </div>
+  </div>
+
+  <!-- HOTEL IGUALADA -->
+  <div style="margin-top:20px;margin-bottom:8px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--terra);font-weight:600">✅ Hotel Confirmado</div>
+  <div style="background:var(--navy);border-radius:3px;padding:16px 20px;border-left:4px solid var(--olive);margin-bottom:20px">
+    <div style="font-size:11px;font-weight:600;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">🏨 Masia Can Farrés · Igualada</div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.6)">Booking #6044730097 · PIN 0673 · juliogrobles@hotmail.com<br>22 jun · 1 noche · 4 adultos · Camí de Can Farrés, S/N · El Bruc</div>
+  </div>
+
+  <!-- PENDIENTES -->
+  <div style="margin-bottom:8px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--terra);font-weight:600">⚠️ Pendientes · Por Reservar</div>
+  <div class="res-grid">
+
+    <div class="res-card urgent">
+      <div class="res-icon">🔴</div>
+      <div class="res-name">Coche · Madrid T4 · 22 jun</div>
+      <div class="res-detail">SIXT o Europcar · Barajas T4<br>Peugeot 5008 o SEAT Tarraco · 4 adultos<br>22 jun – 18 jul (entrega T4 al llegar Madrid)<br>Reservar en nombre de Julio Giovany Robles</div>
+    </div>
+    <div class="res-card urgent">
+      <div class="res-icon">🔴</div>
+      <div class="res-name">Corral de la Morería · Madrid</div>
+      <div class="res-detail">corraldelamoreria.com<br>+34 913 65 84 46<br>Cena + show: €85–110/pers · noche ~21 jul<br>Mejor tablao del mundo · reservar semanas antes</div>
+    </div>
+    <div class="res-card pending">
+      <div class="res-icon">🟡</div>
+      <div class="res-name">Hotel Barcelona · Eixample/El Born</div>
+      <div class="res-detail">23–29 jun · 7 noches · 4 adultos<br>Buscar en Eixample o El Born<br>Julio es temporada altísima — prioridad</div>
+    </div>
+    <div class="res-card pending">
+      <div class="res-icon">🟡</div>
+      <div class="res-name">Hotel Valencia · Ruzafa</div>
+      <div class="res-detail">30 jun – 4 jul · 5 noches · 4 adultos<br>Barrio Ruzafa o alrededores</div>
+    </div>
+    <div class="res-card pending">
+      <div class="res-icon">🟡</div>
+      <div class="res-name">Hotel Cartagena · Centro Histórico</div>
+      <div class="res-detail">5–6 jul · 2 noches · 4 adultos<br>NH Cartagena o Sercotel Cartagena</div>
+    </div>
+    <div class="res-card pending">
+      <div class="res-icon">🟡</div>
+      <div class="res-name">Hotel Málaga · Soho / Centro</div>
+      <div class="res-detail">7–13 jul · 7 noches · 4 adultos<br>ICON Malabar o Vincci Posada del Patio</div>
+    </div>
+    <div class="res-card pending">
+      <div class="res-icon">🟡</div>
+      <div class="res-name">Hotel Granada · Realejo</div>
+      <div class="res-detail">14–17 jul · 4 noches · 4 adultos<br>Hotel Casa 1800 o Alhambra Palace</div>
+    </div>
+    <div class="res-card pending">
+      <div class="res-icon">🟡</div>
+      <div class="res-name">Hotel Madrid · Malasaña/Chueca</div>
+      <div class="res-detail">18–22 jul · 5 noches · 4 adultos<br>Only YOU Boutique o Hotel Urso</div>
+    </div>
+    <div class="res-card pending">
+      <div class="res-icon">🟡</div>
+      <div class="res-name">Sagrada Família · Barcelona</div>
+      <div class="res-detail">sagradafamilia.org · €26–36<br>Reservar con fecha exacta</div>
+    </div>
+    <div class="res-card pending">
+      <div class="res-icon">🟡</div>
+      <div class="res-name">Park Güell · Barcelona</div>
+      <div class="res-detail">parkguell.barcelona · €10<br>Zona monumental con aforo limitado</div>
+    </div>
+    <div class="res-card pending">
+      <div class="res-icon">📋</div>
+      <div class="res-name">Diligencia · Igualada</div>
+      <div class="res-detail">23 jun · 09:00h<br>Confirmar dirección exacta con Giovanni<br>Salida a Barcelona inmediatamente después</div>
+    </div>
+    <div class="res-card pending">
+      <div class="res-icon">📋</div>
+      <div class="res-name">Examen Cervantes · Barcelona</div>
+      <div class="res-detail">25 jun · confirmar hora exacta<br>Barrio Eixample o sede DELE en BCN</div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+// ── NAVIGATION ──
+function goPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const idx=['portada','mapa','elbruc','barcelona','valencia','cartagena','malaga','granada','madrid','reservas'].indexOf(id);
+  document.querySelectorAll('.top-nav .nav-btn')[idx].classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// ── CALENDAR ──
+const calData={
+  '06-21':{dest:'Vuelo\nBOG→MAD',color:'#243B55'},
+  '06-22':{dest:'El Bruc\nCan Farrés',color:'#4A6741'},
+  '06-23':{dest:'Barcelona\n⚑ Diligencia',color:'#C4583A',pin:true},
+  '06-24':{dest:'Barcelona',color:'#C4583A'},
+  '06-25':{dest:'Barcelona\n⚑ Cervantes',color:'#C4583A',pin:true},
+  '06-26':{dest:'Barcelona',color:'#C4583A'},
+  '06-27':{dest:'Barcelona',color:'#C4583A'},
+  '06-28':{dest:'Barcelona',color:'#C4583A'},
+  '06-29':{dest:'Barcelona',color:'#C4583A'},
+  '06-30':{dest:'Valencia',color:'#185FA5'},
+  '07-01':{dest:'Valencia',color:'#185FA5'},
+  '07-02':{dest:'Valencia',color:'#185FA5'},
+  '07-03':{dest:'Valencia',color:'#185FA5'},
+  '07-04':{dest:'Valencia',color:'#185FA5'},
+  '07-05':{dest:'Cartagena\nvía Alicante',color:'#BA7517'},
+  '07-06':{dest:'Cartagena',color:'#BA7517'},
+  '07-07':{dest:'Málaga\nvía Cabo Gata',color:'#A0522D'},
+  '07-08':{dest:'Málaga',color:'#A0522D'},
+  '07-09':{dest:'Málaga',color:'#A0522D'},
+  '07-10':{dest:'Málaga',color:'#A0522D'},
+  '07-11':{dest:'Málaga',color:'#A0522D'},
+  '07-12':{dest:'Málaga',color:'#A0522D'},
+  '07-13':{dest:'Málaga',color:'#A0522D'},
+  '07-14':{dest:'Granada',color:'#534AB7'},
+  '07-15':{dest:'Granada',color:'#534AB7'},
+  '07-16':{dest:'Granada',color:'#534AB7'},
+  '07-17':{dest:'Granada',color:'#534AB7'},
+  '07-18':{dest:'Madrid',color:'#888780'},
+  '07-19':{dest:'Madrid',color:'#888780'},
+  '07-20':{dest:'Madrid',color:'#888780'},
+  '07-21':{dest:'Madrid',color:'#888780'},
+  '07-22':{dest:'Madrid',color:'#888780'},
+  '07-23':{dest:'Vuelo\nMAD→BOG',color:'#243B55'},
+};
+const legend=[
+  {color:'#243B55',label:'Vuelo',dates:'21 jun / 23 jul'},
+  {color:'#4A6741',label:'El Bruc',dates:'22 jun'},
+  {color:'#C4583A',label:'Barcelona',dates:'23–29 jun'},
+  {color:'#185FA5',label:'Valencia',dates:'30 jun–4 jul'},
+  {color:'#BA7517',label:'Cartagena',dates:'5–6 jul'},
+  {color:'#A0522D',label:'Málaga',dates:'7–13 jul'},
+  {color:'#534AB7',label:'Granada',dates:'14–17 jul'},
+  {color:'#888780',label:'Madrid',dates:'18–23 jul'},
+];
+function buildCal(containerId,month){
+  const el=document.getElementById(containerId);
+  const grid=document.createElement('div');grid.className='cal-grid';
+  ['Lu','Ma','Mi','Ju','Vi','Sá','Do'].forEach(n=>{const h=document.createElement('div');h.className='cal-dn';h.textContent=n;grid.appendChild(h);});
+  let dow=new Date(2025,month-1,1).getDay();dow=dow===0?6:dow-1;
+  for(let i=0;i<dow;i++){const e=document.createElement('div');e.className='cal-dc empty';grid.appendChild(e);}
+  const total=new Date(2025,month,0).getDate();
+  for(let d=1;d<=total;d++){
+    const key=`${String(month).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const data=calData[key];
+    const cell=document.createElement('div');
+    cell.className='cal-dc'+(data?' active':'')+(data?.pin?' pin':'');
+    const num=document.createElement('div');num.className='cal-dc-num';num.textContent=d;cell.appendChild(num);
+    if(data){
+      cell.style.background=data.color+'33';
+      const dest=document.createElement('div');dest.className='cal-dc-dest';
+      dest.style.color=data.color==='#243B55'?'rgba(255,255,255,0.6)':data.color;
+      dest.textContent=data.dest.replace('\\n','\n');cell.appendChild(dest);
+    }
+    grid.appendChild(cell);
+  }
+  el.appendChild(grid);
+}
+buildCal('cal-jun',6);buildCal('cal-jul',7);
+const lg=document.getElementById('p-legend');
+legend.forEach(l=>{const item=document.createElement('div');item.className='p-leg';item.innerHTML=`<div class="p-leg-sw" style="background:${l.color}"></div><div class="p-leg-txt">${l.label}<span class="p-leg-d">${l.dates}</span></div>`;lg.appendChild(item);});
+
+// ── MAPA STOPS ──
+const stops=[
+  {num:'01',city:'El Bruc',dates:'22 jun · 1 noche',km:'575 km desde Madrid T4',page:'elbruc'},
+  {num:'02',city:'Barcelona',dates:'23–29 jun · 7 noches',km:'58 km desde El Bruc',page:'barcelona'},
+  {num:'03',city:'Valencia',dates:'30 jun–4 jul · 5 noches',km:'350 km desde Barcelona',page:'valencia'},
+  {num:'04',city:'Cartagena',dates:'5–6 jul · 2 noches',km:'260 km vía Alicante',page:'cartagena'},
+  {num:'⏸',city:'Cabo de Gata',dates:'7 jul · parada',km:'175 km desde Cartagena',page:'malaga'},
+  {num:'05',city:'Málaga',dates:'7–13 jul · 7 noches',km:'200 km desde Cabo Gata',page:'malaga'},
+  {num:'06',city:'Granada',dates:'14–17 jul · 4 noches',km:'130 km desde Málaga',page:'granada'},
+  {num:'07',city:'Madrid',dates:'18–22 jul · 5 noches',km:'430 km desde Granada',page:'madrid'},
+];
+const ms=document.getElementById('mapa-stops');
+stops.forEach(s=>{
+  const c=document.createElement('div');c.className='stop-card';
+  c.innerHTML=`<div class="stop-num">Parada ${s.num}</div><div class="stop-city">${s.city}</div><div class="stop-dates">${s.dates}</div><div class="stop-km">🚗 ${s.km}</div>`;
+  c.onclick=()=>goPage(s.page);ms.appendChild(c);
+});
+</script>
+</body>
+</html>
