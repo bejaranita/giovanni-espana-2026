@@ -75,7 +75,18 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
 .stop-dates{font-size:11px;color:rgba(255,255,255,.5)}
 .stop-km{font-size:10px;color:var(--gold);margin-top:2px}
 
-/* ── EMPAQUE ── */
+/* ── PLAN DÍA POR DÍA ── */
+.dayplan-table{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;border:1px solid var(--border);border-radius:3px;overflow:hidden}
+.dayplan-table thead{background:var(--navy);color:#fff}
+.dayplan-table th{padding:10px 12px;font-size:9.5px;letter-spacing:1px;text-transform:uppercase;text-align:left;font-weight:500;white-space:nowrap}
+.dayplan-table td{padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.dayplan-table tr:last-child td{border-bottom:none}
+.dayplan-table tr:nth-child(even) td{background:#FAFAF8}
+.dayplan-table .dp-day{font-weight:600;color:var(--navy);white-space:nowrap}
+.dayplan-table tr.dp-fixed td{background:#FFF3CD!important}
+.dayplan-note{background:#FFF8ED;border-left:3px solid var(--gold);padding:10px 14px;font-size:12px;margin-top:10px;border-radius:0 3px 3px 0;line-height:1.6}
+@media(max-width:700px){.dayplan-table{display:block;overflow-x:auto;white-space:nowrap}}
+
 .emp-wrap{background:var(--navy);min-height:calc(100vh - 44px);padding:32px 0}
 .emp-selector-screen{padding-top:8px}
 .emp-persona-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 24px}
@@ -433,7 +444,7 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
       <div class="dest-city"><em>Barcelona</em></div>
       <div class="dest-meta-row">
         <div class="dest-meta"><span class="dest-meta-label">Noches</span><span class="dest-meta-val">7 noches</span></div>
-        <div class="dest-meta"><span class="dest-meta-label">Barrio</span><span class="dest-meta-val">Eixample o El Born</span></div>
+        <div class="dest-meta"><span class="dest-meta-label">Alojamiento</span><span class="dest-meta-val">✅ La Casa de Pere · Camp de l'Arpa</span></div>
         <div class="dest-meta"><span class="dest-meta-label">Examen</span><span class="dest-meta-val">Cervantes · 25 jun ⚑</span></div>
         <div class="dest-meta"><span class="dest-meta-label">Parking</span><span class="dest-meta-val">Dejar coche en parking cubierto</span></div>
       </div>
@@ -442,7 +453,79 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
   </div>
 </div>
 <div class="dest-body">
-  <p class="dest-desc">Barcelona es probablemente la ciudad más completa de España para un viaje en familia con jóvenes. La arquitectura modernista de <strong>Gaudí</strong> convive con playas urbanas, mercados históricos y una gastronomía que va desde el bocadillo de jamón hasta la alta cocina. El <strong>Eixample</strong> — el barrio de la cuadrícula perfecta — es la mejor base: todo a pie, transporte excelente, y en el centro exacto de la ciudad. 7 noches dan tiempo suficiente para descubrir la ciudad con calma y hacer dos excursiones.</p>
+  <p class="dest-desc">Barcelona es probablemente la ciudad más completa de España para un viaje en familia con jóvenes. La arquitectura modernista de <strong>Gaudí</strong> convive con playas urbanas, mercados históricos y una gastronomía que va desde el bocadillo de jamón hasta la alta cocina. Se alojan en <strong>La Casa de Pere</strong> (intercambio de casa), en Carrer de la Indústria 235 — barrio de Camp de l'Arpa / El Clot, junto al Recinte Modernista de Sant Pau. No es el centro turístico pero está a 15-20 min en metro de todo, y tienen un mercado de barrio auténtico (Mercat del Clot) a la vuelta de la esquina. 7 noches dan tiempo de sobra para vivir la ciudad sin prisa.</p>
+
+  <div class="act-card done" style="margin-bottom:20px">
+    <div class="act-tag tag-must" style="background:#E8F0E4;color:var(--olive)">✅ ALOJAMIENTO CONFIRMADO</div>
+    <div class="act-name">La Casa de Pere · Intercambio #124866195</div>
+    <div class="act-detail">Carrer de la Indústria, 235, Barcelona · Anfitrión: Pere Santanach · 📞 +34 620 12 09 02 · ✉️ p_santanach@yahoo.com<br>23–30 junio · 7 noches · 4 viajeros · Intercambio no recíproco</div>
+  </div>
+  <div class="dayplan-section">
+    <div class="section-eyebrow">🗓 Plan día por día — ritmo sin afán</div>
+    <div class="dayplan-note">🛏 <strong>Filosofía de estos días:</strong> nadie madruga salvo el 25 (examen). Despertar natural ~10:00–10:30h, brunch fuerte en vez de desayuno+almuerzo separados, máximo 1 sitio "de postal" al día (nada de maratón de museos), shopping y barrios con identidad real, cena española (21:00h) y trasnoche libre para los 3 jóvenes — Giovanni vuelve cuando quiera.</div>
+    <table class="dayplan-table">
+      <thead><tr><th>Día</th><th>Despertar</th><th>Brunch</th><th>Plan mediodía–tarde</th><th>Cena</th><th>Noche</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="dp-day">Lun 23</td>
+          <td>~14:00h llegada</td>
+          <td>—</td>
+          <td>Check-in con Pere · Mercat del Clot (mercado de barrio, sin turistas) · dejar coche en parking cercano</td>
+          <td>Algo ligero cerca de casa</td>
+          <td>Dormir temprano — vienen de diligencia + 3 vuelos</td>
+        </tr>
+        <tr>
+          <td class="dp-day">Mar 24</td>
+          <td>10:00h</td>
+          <td>Garbí Cafè · misma calle (Indústria 303)</td>
+          <td>Sagrada Família (reservada, visita rápida) + shopping Passeig de Gràcia</td>
+          <td>El Born — Casa Delfín</td>
+          <td>Jóvenes: El Born hasta tarde · Giovanni vuelve en metro L1/L2</td>
+        </tr>
+        <tr class="dp-fixed">
+          <td class="dp-day">Mié 25 ⚑</td>
+          <td>Según hora del examen</td>
+          <td>Algo ligero y energético antes</td>
+          <td><strong>EXAMEN CERVANTES</strong> (confirmar hora) · tarde libre: Park Güell (reservar)</td>
+          <td>Tranquila, cerca de casa</td>
+          <td>Descanso post-examen — día de celebrar, no de fiesta</td>
+        </tr>
+        <tr>
+          <td class="dp-day">Jue 26</td>
+          <td>10:30h</td>
+          <td>Etama (Passatge Sant Pau) o Dunk n Dips</td>
+          <td>Barri Gòtic + La Boqueria (mercado, identidad real) + shopping El Born</td>
+          <td>Palau del Born (terraza)</td>
+          <td>El Born o Razzmatazz — noche larga para los 3</td>
+        </tr>
+        <tr>
+          <td class="dp-day">Vie 27</td>
+          <td>10:30h</td>
+          <td>Garbí Cafè</td>
+          <td>Playa Barceloneta · atardecer en Bunkers del Carmel (vista 360°, sitio local poco turístico)</td>
+          <td>Barrio de Gràcia (auténtico)</td>
+          <td>Gràcia de noche</td>
+        </tr>
+        <tr>
+          <td class="dp-day">Sáb 28</td>
+          <td>11:00h (sábado)</td>
+          <td>Brunch tardío</td>
+          <td>Camp Nou tour (identidad fútbol) o Montjuïc + Mercat dels Encants (vintage, les va a encantar)</td>
+          <td>Cena especial de despedida BCN</td>
+          <td>Última noche de fiesta en Barcelona</td>
+        </tr>
+        <tr>
+          <td class="dp-day">Dom 29</td>
+          <td>Libre</td>
+          <td>Brunch tranquilo</td>
+          <td>Empacar · despedida de Pere</td>
+          <td>Cena temprana</td>
+          <td>Dormir bien — al día siguiente 350 km a Valencia</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
   <div>
     <div class="section-eyebrow">Qué hacer · Plan por días sugerido</div>
     <div class="act-grid">
@@ -548,6 +631,56 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
 <div class="dest-body">
   <p class="dest-desc">Valencia es la tercera ciudad de España y la que mejor vive. <strong>Ruzafa</strong> es el barrio del momento en toda España — terrazas con diseño, restaurantes creativos, cafés de especialidad y una vida de barrio auténtica que los chicos van a disfrutar mucho. La ciudad tiene además la joya arquitectónica de la <strong>Ciudad de las Artes y las Ciencias</strong> y el mercado cubierto más bonito de Europa. Y la paella nació aquí — hay que comerla en el lugar correcto.</p>
   <div>
+    <div class="dayplan-section">
+      <div class="section-eyebrow">🗓 Plan día por día</div>
+      <div class="dayplan-note">🛏 Mismo ritmo: despertar libre, brunch fuerte en Ruzafa (el barrio está lleno de opciones buenísimas), 1 sitio icónico al día máximo, identidad por encima de museos, trasnoche libre.</div>
+      <table class="dayplan-table">
+        <thead><tr><th>Día</th><th>Despertar</th><th>Brunch</th><th>Plan mediodía–tarde</th><th>Cena</th><th>Noche</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="dp-day">30 jun</td>
+            <td>~15-16h llegada</td>
+            <td>—</td>
+            <td>350km desde BCN · check-in · caminar Ruzafa, primera impresión</td>
+            <td>Algo cerca, ligero</td>
+            <td>Descanso del viaje largo</td>
+          </tr>
+          <tr>
+            <td class="dp-day">1 jul</td>
+            <td>10:30h</td>
+            <td>Milk and Butter (Ruzafa)</td>
+            <td>Mercado Central + La Lonja (rápido, 30 min) + shopping Calle Colón</td>
+            <td>Restaurant Secret (reservar — joya escondida)</td>
+            <td>Ruzafa de noche — terrazas hasta tarde</td>
+          </tr>
+          <tr>
+            <td class="dp-day">2 jul</td>
+            <td>10:30h</td>
+            <td>Blackbird (Ruzafa)</td>
+            <td>Ciudad de las Artes y Ciencias (arquitectura Calatrava, foto, Oceanogràfic opcional)</td>
+            <td>Puerta del Mar (paella)</td>
+            <td>Ruzafa</td>
+          </tr>
+          <tr>
+            <td class="dp-day">3 jul</td>
+            <td>11:00h</td>
+            <td>Café ArtySana (Ruzafa)</td>
+            <td>Playa Malvarrosa — tarde de relax</td>
+            <td>Barrio del Carmen (tapas + arte urbano)</td>
+            <td>El Carmen de noche</td>
+          </tr>
+          <tr>
+            <td class="dp-day">4 jul</td>
+            <td>11:00h</td>
+            <td>Brunch en Ruzafa</td>
+            <td>Albufera + El Palmar — paella en el lugar donde nació el plato (identidad pura)</td>
+            <td>Ligera al volver</td>
+            <td>Empacar — al día siguiente sale hacia Cartagena vía Alicante (260km)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="section-eyebrow">Qué hacer</div>
     <div class="act-grid">
       <div class="act-card must">
@@ -631,6 +764,29 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
 <div class="dest-body">
   <p class="dest-desc">Cartagena es una de las ciudades más antiguas de España — fundada por los cartagineses en el s.III a.C. y convertida luego en puerto estratégico del Imperio Romano. Su <strong>Teatro Romano</strong>, redescubierto en 1988, es uno de los mejor conservados de la Península. La ciudad tiene además acceso directo a las playas del <strong>Mar Menor</strong> y a <strong>La Manga</strong>, una franja de tierra de 22 km entre el mar abierto y la laguna más grande de España.</p>
   <div>
+    <div class="dayplan-section">
+      <div class="section-eyebrow">🗓 Plan día por día</div>
+      <table class="dayplan-table">
+        <thead><tr><th>Día</th><th>Despertar</th><th>Plan</th><th>Cena</th><th>Noche</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="dp-day">5 jul</td>
+            <td>10-11h salida Valencia</td>
+            <td>Parada en Alicante: Castillo Santa Bárbara + Explanada + almuerzo · llegada Cartagena ~17-18h</td>
+            <td>Cerca del hotel, tranquila</td>
+            <td>Descanso</td>
+          </tr>
+          <tr>
+            <td class="dp-day">6 jul</td>
+            <td>10:30h</td>
+            <td>Teatro Romano + ARQUA + Muralla Púnica (todo al aire libre, medio día) · tarde: Cabo de Palos</td>
+            <td>Marisco en Cabo de Palos al atardecer</td>
+            <td>La Manga si quieren playa nocturna, o noche tranquila</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="section-eyebrow">Qué hacer</div>
     <div class="act-grid">
       <div class="act-card must">
@@ -710,6 +866,72 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
     </div>
   </div>
   <div>
+    <div class="dayplan-section">
+      <div class="section-eyebrow">🗓 Plan día por día — 7 días en Málaga</div>
+      <div class="dayplan-note">🛏 Soho concentra los mejores brunch de la ciudad — usan distintos cada día. Día 5 y 6 son excursión (Nerja y Ronda) y por eso sí toca salir un poco antes, sin exagerar.</div>
+      <table class="dayplan-table">
+        <thead><tr><th>Día</th><th>Despertar</th><th>Brunch</th><th>Plan mediodía–tarde</th><th>Cena</th><th>Noche</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="dp-day">7 jul</td>
+            <td>~16-17h llegada</td>
+            <td>—</td>
+            <td>Parada playas Cabo de Gata en la mañana · 200km hasta Málaga · check-in</td>
+            <td>Picasso Bar Tapas (Pl. de la Merced)</td>
+            <td>Caminar Soho de noche</td>
+          </tr>
+          <tr>
+            <td class="dp-day">8 jul</td>
+            <td>10:30h</td>
+            <td>García coffee house (Soho)</td>
+            <td>Alcazaba + Gibralfaro (rápido, vista, no museo pesado)</td>
+            <td>La Tasquita de en Medio</td>
+            <td>Soho de noche</td>
+          </tr>
+          <tr>
+            <td class="dp-day">9 jul</td>
+            <td>10:30h</td>
+            <td>Begobé Soho</td>
+            <td>Mural tour Soho (arte urbano de nivel mundial) + shopping Marqués de Larios</td>
+            <td>Bar La Tranca (tapas, ambiente local)</td>
+            <td>Plaza de la Merced</td>
+          </tr>
+          <tr>
+            <td class="dp-day">10 jul</td>
+            <td>11:00h</td>
+            <td>Mala Leche</td>
+            <td>Playa Malagueta + Mercado Atarazanas</td>
+            <td>Espetos de sardinas en El Palo</td>
+            <td>Noche tranquila</td>
+          </tr>
+          <tr>
+            <td class="dp-day">11 jul</td>
+            <td>10:30h (excursión)</td>
+            <td>En Nerja al llegar</td>
+            <td>Cuevas de Nerja (reservada) + Balcón de Europa + Frigiliana — 55km</td>
+            <td>En Nerja o al regreso</td>
+            <td>Regreso Málaga ~21h</td>
+          </tr>
+          <tr>
+            <td class="dp-day">12 jul</td>
+            <td>10:00h (excursión)</td>
+            <td>En ruta o en Ronda</td>
+            <td>Puente Nuevo + Plaza de Toros — 110km, día completo</td>
+            <td>En Ronda</td>
+            <td>Regreso Málaga noche</td>
+          </tr>
+          <tr>
+            <td class="dp-day">13 jul</td>
+            <td>11:00h</td>
+            <td>Brunch tardío, último día</td>
+            <td>Shopping final + playa</td>
+            <td>Cena de despedida especial</td>
+            <td>Última noche — mañana sale hacia Granada</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="section-eyebrow">Qué hacer en Málaga</div>
     <div class="act-grid">
       <div class="act-card must">
@@ -809,6 +1031,56 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
     </div>
   </div>
   <div>
+    <div class="dayplan-section">
+      <div class="section-eyebrow">🗓 Plan día por día</div>
+      <div class="dayplan-note">🛏 18 jul es el <strong>único madrugón obligatorio de los 32 días</strong> — Alhambra a las 09:00h en punto + 430km a Madrid el mismo día. Los demás días, ritmo normal.</div>
+      <table class="dayplan-table">
+        <thead><tr><th>Día</th><th>Despertar</th><th>Brunch</th><th>Plan mediodía–tarde</th><th>Cena</th><th>Noche</th></tr></thead>
+        <tbody>
+          <tr>
+            <td class="dp-day">14 jul</td>
+            <td>~12-13h llegada</td>
+            <td>Almuerzo cerca de casa</td>
+            <td>130km desde Málaga · check-in Realejo · paseo Albaicín</td>
+            <td>Mirador de Tato o Carmen Mirador de Aixa (reservar — vista Alhambra)</td>
+            <td>Mirador San Nicolás al atardecer</td>
+          </tr>
+          <tr>
+            <td class="dp-day">15 jul</td>
+            <td>10:30h</td>
+            <td>Brunch en Realejo</td>
+            <td>Capilla Real + El Bañuelo (rápido) + shopping Calle Mesones</td>
+            <td>Tapas gratis — ruta Calle Navas</td>
+            <td>Noche de tapas (la cena más barata y divertida del viaje)</td>
+          </tr>
+          <tr>
+            <td class="dp-day">16 jul</td>
+            <td>11:00h</td>
+            <td>Brunch tranquilo</td>
+            <td>Sacromonte — cuevas, ambiente gitano auténtico</td>
+            <td>Restaurante Carmen El Agua (vista Alhambra, reservar)</td>
+            <td>Flamenco Sacromonte (si reservado) — €25-35/pers</td>
+          </tr>
+          <tr>
+            <td class="dp-day">17 jul</td>
+            <td>11:00h — último día libre</td>
+            <td>Brunch tranquilo</td>
+            <td>Tiempo libre / shopping final</td>
+            <td>Cena temprana</td>
+            <td>Dormir temprano — mañana es el único madrugón del viaje</td>
+          </tr>
+          <tr class="dp-fixed">
+            <td class="dp-day">18 jul ⚑</td>
+            <td>07:00h (excepción)</td>
+            <td>Rápido antes de salir</td>
+            <td>Alhambra 08:30h (Alcazaba+Generalife) · Nazaríes 09:00h en punto · salida ~13:30h hacia Madrid (430km/4h)</td>
+            <td>Llegada Madrid ~17:30-18h, cena relajada</td>
+            <td>Descanso — día largo pero el más especial del viaje</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="section-eyebrow">Qué hacer</div>
     <div class="act-grid">
       <div class="act-card must">
@@ -876,35 +1148,54 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
 </div>
 <div class="dest-body">
   <p class="dest-desc">Madrid es la ciudad más contradictoria de España: la capital política con la mejor colección de arte del mundo, el barrio más castizo con las tiendas más modernas, la institución más formal con la noche más larga de Europa. <strong>Malasaña</strong> — el barrio de la Movida de los 80 — hoy es el más vibrante de Madrid: tiendas independientes, restaurantes de todas las cocinas, y vida nocturna que los chicos van a aprovechar. El <strong>Museo del Prado</strong> es la razón por la que Madrid está en el circuito cultural mundial. Madrid es el broche perfecto para cerrar el viaje.</p>
-  <div>
-    <div class="section-eyebrow">Plan sugerido · 5 días</div>
-    <div class="act-grid">
-      <div class="act-card" style="border-left:3px solid var(--gold)">
-        <div class="act-name">Día 1 · 18 jul — Llegada</div>
-        <div class="act-detail">Dejar coche en T4 · metro línea 8 al centro. Tarde: Parque del Retiro (lago, barca, Palacio de Cristal). Noche: 🎹 Piano Bar Tonny 2.</div>
-        <div class="act-price">Retiro gratis · barca €7 · Tonny 2: +34 915 42 23 28</div>
-      </div>
-      <div class="act-card" style="border-left:3px solid var(--gold)">
-        <div class="act-name">Día 2 · 19 jul — Arte + Serrano</div>
-        <div class="act-detail">Mañana: Museo del Prado (gratis lunes 18-20h si cae en lunes). Tarde: 🛍 Shopping Calle Serrano y Barrio Salamanca. Noche libre Malasaña.</div>
-        <div class="act-price">Prado €22 · Serrano gratis</div>
-      </div>
-      <div class="act-card" style="border-left:3px solid var(--gold)">
-        <div class="act-name">Día 3 · 20 jul — Excursión Toledo</div>
-        <div class="act-detail">Toledo en un día: Catedral (€12.50), Alcázar (€5), San Juan de los Reyes (€2.80), Mirador del Valle al atardecer. Vuelta a Madrid a cenar.</div>
-        <div class="act-price">75 km · 45 min · A-42</div>
-      </div>
-      <div class="act-card" style="border-left:3px solid var(--gold)">
-        <div class="act-name">Día 4 · 21 jul — Palacio + Flamenco</div>
-        <div class="act-detail">Mañana: Palacio Real + Plaza Mayor + Mercado San Miguel. Noche: 🎭 Corral de la Morería — cena + show de flamenco. El mejor tablao del mundo.</div>
-        <div class="act-price">Palacio €14 · Corral: €85–110/pers · +34 913 65 84 46</div>
-      </div>
-      <div class="act-card" style="border-left:3px solid var(--gold)">
-        <div class="act-name">Día 5 · 22 jul — Tour Bernabéu + despedida</div>
-        <div class="act-detail">Tour estadio Santiago Bernabéu (nuevo, inmersivo). Tarde libre Malasaña o Chueca. Última cena en Madrid. 23 jul: vuelo a Bogotá.</div>
-        <div class="act-price">Bernabéu €25 · bernabeu.realmadrid.com</div>
-      </div>
-    </div>
+  <div class="dayplan-section">
+    <div class="section-eyebrow">🗓 Plan día por día — 5 días</div>
+    <div class="dayplan-note">🛏 Llegan ya tarde el 18 (después de Alhambra + 430km), así que ese día no cuenta. Del 19 al 22, despertar natural ~10:30h, brunch en Malasaña (de los mejores de España), 1 plan fuerte al día, shopping, trasnoche para los 3 jóvenes.</div>
+    <table class="dayplan-table">
+      <thead><tr><th>Día</th><th>Despertar</th><th>Brunch</th><th>Plan mediodía–tarde</th><th>Cena</th><th>Noche</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="dp-day">18 jul</td>
+          <td>Llegada ~17:30h</td>
+          <td>—</td>
+          <td>Dejar coche en T4 · metro a Malasaña · check-in · Parque del Retiro si da el tiempo</td>
+          <td>Algo relajado cerca del hotel</td>
+          <td>🎹 Piano Bar Tonny 2 — ambiente íntimo para aterrizar en Madrid</td>
+        </tr>
+        <tr>
+          <td class="dp-day">19 jul</td>
+          <td>10:30h</td>
+          <td>Le Praliné (Malasaña)</td>
+          <td>Museo del Prado (visita rápida, 2h máximo, no maratón) + 🛍 shopping Calle Serrano</td>
+          <td>Mercado San Miguel</td>
+          <td>Malasaña libre</td>
+        </tr>
+        <tr>
+          <td class="dp-day">20 jul</td>
+          <td>9:30h (excursión)</td>
+          <td>En Toledo o antes de salir</td>
+          <td>Toledo en un día: Catedral + Alcázar + San Juan de los Reyes + Mirador del Valle — 75km</td>
+          <td>De vuelta en Madrid</td>
+          <td>Noche libre</td>
+        </tr>
+        <tr>
+          <td class="dp-day">21 jul</td>
+          <td>10:30h</td>
+          <td>Loca Obsesión Malasaña</td>
+          <td>Palacio Real + Plaza Mayor</td>
+          <td>🎭 Corral de la Morería — cena + show flamenco (reservar con semanas de antelación)</td>
+          <td>El mejor tablao del mundo — noche especial de cierre</td>
+        </tr>
+        <tr>
+          <td class="dp-day">22 jul</td>
+          <td>11:00h — último día</td>
+          <td>EatMyTrip Malasaña</td>
+          <td>Tour Bernabéu (inmersivo, para los chicos) + shopping final Gran Vía</td>
+          <td>Última cena del viaje</td>
+          <td>Despedida — 23 jul vuelo a Bogotá</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div>
     <div class="section-eyebrow">Imprescindibles de Madrid</div>
@@ -1064,11 +1355,15 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
     </div>
   </div>
 
-  <!-- HOTEL IGUALADA -->
-  <div style="margin-top:20px;margin-bottom:8px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--terra);font-weight:600">✅ Hotel Confirmado</div>
-  <div style="background:var(--navy);border-radius:3px;padding:16px 20px;border-left:4px solid var(--olive);margin-bottom:20px">
-    <div style="font-size:11px;font-weight:600;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">🏨 Masia Can Farrés · Igualada</div>
+  <!-- HOTELES CONFIRMADOS -->
+  <div style="margin-top:20px;margin-bottom:8px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--terra);font-weight:600">✅ Alojamientos Confirmados</div>
+  <div style="background:var(--navy);border-radius:3px;padding:16px 20px;border-left:4px solid var(--olive);margin-bottom:8px">
+    <div style="font-size:11px;font-weight:600;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">🏨 Masia Can Farrés · Igualada / El Bruc</div>
     <div style="font-size:12px;color:rgba(255,255,255,0.6)">Booking #6044730097 · PIN 0673 · juliogrobles@hotmail.com<br>22 jun · 1 noche · 4 adultos · Camí de Can Farrés, S/N · El Bruc</div>
+  </div>
+  <div style="background:var(--navy);border-radius:3px;padding:16px 20px;border-left:4px solid var(--olive);margin-bottom:20px">
+    <div style="font-size:11px;font-weight:600;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">🏠 La Casa de Pere · Barcelona (Intercambio)</div>
+    <div style="font-size:12px;color:rgba(255,255,255,0.6)">Exchange #124866195 · No recíproco<br>Carrer de la Indústria, 235 · Camp de l'Arpa, Barcelona<br>Anfitrión: Pere Santanach · 📞 +34 620 12 09 02 · ✉️ p_santanach@yahoo.com<br>23–30 jun · 7 noches · 4 viajeros</div>
   </div>
 
   <!-- PENDIENTES -->
