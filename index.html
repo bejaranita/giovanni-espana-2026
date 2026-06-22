@@ -75,7 +75,36 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
 .stop-dates{font-size:11px;color:rgba(255,255,255,.5)}
 .stop-km{font-size:10px;color:var(--gold);margin-top:2px}
 
-/* ── DESTINO ── */
+/* ── EMPAQUE ── */
+.emp-wrap{background:var(--navy);min-height:calc(100vh - 44px);padding:32px 0}
+.emp-selector-screen{padding-top:8px}
+.emp-persona-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 24px}
+.emp-persona-card{background:rgba(255,255,255,0.06);border:2px solid transparent;border-radius:6px;padding:24px 16px;text-align:center;cursor:pointer;transition:all .2s}
+.emp-persona-card:hover{background:rgba(255,255,255,0.1);border-color:var(--gold)}
+.emp-persona-emoji{font-size:32px;margin-bottom:8px}
+.emp-persona-name{font-size:15px;font-weight:600;color:#fff}
+.emp-persona-age{font-size:12px;color:rgba(255,255,255,0.4);margin-top:2px}
+.emp-header{display:flex;justify-content:space-between;align-items:flex-start;padding:0 24px;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.emp-switch-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);padding:8px 14px;border-radius:20px;font-size:11px;cursor:pointer;font-family:var(--font-body)}
+.emp-progress-card{display:flex;align-items:center;gap:20px;background:rgba(255,255,255,0.05);border-radius:6px;padding:16px 20px;margin:0 24px 24px}
+.emp-progress-ring-wrap{position:relative;width:80px;height:80px;flex-shrink:0}
+.emp-ring-svg{width:100%;height:100%}
+#emp-ring-fill{transition:stroke-dashoffset .5s ease}
+.emp-ring-text{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;color:#fff}
+.emp-progress-count{font-size:14px;font-weight:600;color:#fff}
+.emp-progress-sub{font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px}
+.emp-section{margin:0 24px 20px}
+.emp-section-title{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid rgba(201,168,76,0.2)}
+.emp-item{display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.06);cursor:pointer}
+.emp-item:last-child{border-bottom:none}
+.emp-item-check{width:22px;height:22px;border-radius:6px;border:2px solid rgba(255,255,255,0.25);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;margin-top:1px}
+.emp-item.checked .emp-item-check{background:var(--olive);border-color:var(--olive)}
+.emp-item.checked .emp-item-check::after{content:"✓";color:#fff;font-size:13px;font-weight:700}
+.emp-item-name{font-size:14px;color:#fff;transition:color .2s}
+.emp-item.checked .emp-item-name{color:rgba(255,255,255,0.35);text-decoration:line-through}
+.emp-item-note{font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px}
+.emp-must-badge{display:inline-block;background:rgba(196,88,58,0.25);color:#E8A088;padding:1px 7px;border-radius:10px;font-size:9px;font-weight:600;margin-left:6px}
+
 .dest-hero{background:var(--navy);padding:40px 48px 32px;position:relative;overflow:hidden}
 .dest-hero::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.06) 0%,transparent 60%)}
 .dest-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px}
@@ -218,6 +247,8 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
     <button class="nav-btn" onclick="goPage('granada')">🏰 Granada</button>
     <button class="nav-btn" onclick="goPage('madrid')">👑 Madrid</button>
     <button class="nav-btn" onclick="goPage('reservas')">📋 Reservas</button>
+    <button class="nav-btn" onclick="goPage('empaque')">🎒 Empaque</button>
+    <button class="nav-btn" onclick="goPage('anecdotas')">📓 Anécdotas</button>
   </div>
 </nav>
 
@@ -1108,13 +1139,114 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
 </div>
 </div>
 
+<!-- ══════════════════════════════════════════
+     EMPAQUE · POR VIAJERO
+══════════════════════════════════════════ -->
+<div id="empaque" class="page">
+<div class="emp-wrap">
+
+  <!-- SELECTOR DE PERSONA -->
+  <div id="emp-selector" class="emp-selector-screen">
+    <div class="p-eyebrow" style="padding:0 24px">Equipaje personal</div>
+    <div class="mapa-title" style="padding:0 24px;margin-bottom:24px">¿Quién <em>eres</em>?</div>
+    <div class="emp-persona-grid">
+      <div class="emp-persona-card" onclick="selectPersona('giovanni')">
+        <div class="emp-persona-emoji">👔</div>
+        <div class="emp-persona-name">Giovanni</div>
+        <div class="emp-persona-age">54 años</div>
+      </div>
+      <div class="emp-persona-card" onclick="selectPersona('samuel')">
+        <div class="emp-persona-emoji">🧢</div>
+        <div class="emp-persona-name">Samuel</div>
+        <div class="emp-persona-age">21 años</div>
+      </div>
+      <div class="emp-persona-card" onclick="selectPersona('sarita')">
+        <div class="emp-persona-emoji">👗</div>
+        <div class="emp-persona-name">Sarita</div>
+        <div class="emp-persona-age">20 años</div>
+      </div>
+      <div class="emp-persona-card" onclick="selectPersona('tomas')">
+        <div class="emp-persona-emoji">🎮</div>
+        <div class="emp-persona-name">Tomas</div>
+        <div class="emp-persona-age">15 años</div>
+      </div>
+    </div>
+    <div style="padding:0 24px;font-size:12px;color:rgba(255,255,255,0.4);text-align:center;margin-top:8px">Solo lo eliges una vez en tu teléfono — se recuerda automáticamente</div>
+  </div>
+
+  <!-- LISTA PERSONAL -->
+  <div id="emp-checklist" class="emp-checklist-screen" style="display:none">
+    <div class="emp-header">
+      <div>
+        <div class="p-eyebrow" id="emp-greeting">Hola</div>
+        <div class="mapa-title"><em id="emp-name-title">Tu</em> equipaje</div>
+      </div>
+      <button onclick="switchPersona()" class="emp-switch-btn">Cambiar persona</button>
+    </div>
+
+    <div class="emp-progress-card">
+      <div class="emp-progress-ring-wrap">
+        <svg viewBox="0 0 100 100" class="emp-ring-svg">
+          <circle cx="50" cy="50" r="42" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="8"/>
+          <circle id="emp-ring-fill" cx="50" cy="50" r="42" fill="none" stroke="#C9A84C" stroke-width="8" stroke-linecap="round" stroke-dasharray="264" stroke-dashoffset="264" transform="rotate(-90 50 50)"/>
+        </svg>
+        <div class="emp-ring-text" id="emp-ring-pct">0%</div>
+      </div>
+      <div class="emp-progress-info">
+        <div class="emp-progress-count" id="emp-progress-count">0 / 0 listo</div>
+        <div class="emp-progress-sub">Sigue marcando lo que vas empacando</div>
+      </div>
+    </div>
+
+    <div id="emp-sections"></div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ANÉCDOTAS · BITÁCORA
+══════════════════════════════════════════ -->
+<div id="anecdotas" class="page">
+<div class="dest-hero">
+  <div class="dest-eyebrow">Para el libro de viaje</div>
+  <div class="dest-city">Anécdotas <em>del</em> viaje</div>
+  <p style="color:rgba(255,255,255,0.6);font-size:13px;max-width:600px;margin-top:10px">Cada momento que quieran recordar, cada anécdota graciosa, cada comentario de los chicos — regístrenlo aquí. Al final del viaje todas las notas quedan organizadas por día y por persona para armar la bitácora.</p>
+</div>
+<div class="dest-body">
+  <div class="section-eyebrow">📝 Registra tu anécdota de hoy</div>
+  <div class="act-card must" style="margin-bottom:24px">
+    <div class="act-tag tag-must">UN CLIC DESDE EL CELULAR</div>
+    <div class="act-name">Formulario de anécdotas</div>
+    <div class="act-detail" style="margin-bottom:14px">Toca el botón, llena 3 campos (quién eres, en qué ciudad están, qué pasó) y listo — queda guardado automáticamente. Tarda 30 segundos.</div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScTKmPDEaspN1-Vzdb4J1fNYcJs1DvdKgAq5hdrSiFvPsGaiw/viewform?usp=publish-editor" target="_blank" style="display:inline-block;background:var(--terra);color:#fff;padding:12px 28px;border-radius:3px;font-size:13px;font-weight:600;text-decoration:none">✍️ Escribir una anécdota</a>
+  </div>
+
+  <div class="section-eyebrow">📖 Cómo funciona</div>
+  <div class="act-grid">
+    <div class="act-card">
+      <div class="act-name">1 · Durante el viaje</div>
+      <div class="act-detail">Cada vez que algo gracioso, especial o memorable pase, cualquiera de los 4 lo registra en el formulario. No hay límite — pueden escribir varias veces al día.</div>
+    </div>
+    <div class="act-card">
+      <div class="act-name">2 · Se guarda solo</div>
+      <div class="act-detail">Todo cae automáticamente en una hoja compartida, organizado por fecha, persona y ciudad. Nadie tiene que hacer nada manual.</div>
+    </div>
+    <div class="act-card">
+      <div class="act-name">3 · Al regresar</div>
+      <div class="act-detail">Sandra abre la hoja con las 32 días de anécdotas ya ordenadas, las cruza con el itinerario, y arma la bitácora o el libro de fotos del viaje.</div>
+    </div>
+  </div>
+</div>
+</div>
+
 <script>
 // ── NAVIGATION ──
 function goPage(id){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  const idx=['portada','mapa','elbruc','barcelona','valencia','cartagena','malaga','granada','madrid','reservas'].indexOf(id);
+  const idx=['portada','mapa','elbruc','barcelona','valencia','cartagena','malaga','granada','madrid','reservas','empaque','anecdotas'].indexOf(id);
   document.querySelectorAll('.top-nav .nav-btn')[idx].classList.add('active');
   window.scrollTo(0,0);
 }
@@ -1209,6 +1341,183 @@ stops.forEach(s=>{
   c.innerHTML=`<div class="stop-num">Parada ${s.num}</div><div class="stop-city">${s.city}</div><div class="stop-dates">${s.dates}</div><div class="stop-km">🚗 ${s.km}</div>`;
   c.onclick=()=>goPage(s.page);ms.appendChild(c);
 });
+// ── EMPAQUE: datos por persona ──
+const empData = {
+  shared: {
+    label: 'Compartido / Para todos',
+    items: [
+      ['adaptador','Adaptador corriente europeo (tipo C/F)','Colombia usa tipo A — España tipo C','MUST'],
+      ['solar','Protector solar SPF 50+','Julio en España quema fuerte','MUST'],
+      ['tenis','Tenis cómodos para caminar','Van puestos en el avión','MUST'],
+      ['sim','eSIM o SIM España','Comprar en Madrid al llegar ~€15/mes','MUST'],
+      ['sandalias','Sandalias o chanclas','Para playa y paseo diario'],
+      ['repelente','Repelente de mosquitos','Noches de verano'],
+      ['toalla','Toalla de microfibra','Secado rápido para playas'],
+      ['detergente','Detergente líquido travel','Lavar 2-3 veces en el viaje'],
+      ['botiquin','Botiquín básico','Ibuprofeno, antidiarreico, tiritas'],
+      ['gafassol','Gafas de sol','Sol del Mediterráneo es fuerte'],
+      ['gorra','Gorra o sombrero','Especial para Cabo de Gata'],
+      ['powerbank','Power bank','Para excursiones lejos del coche'],
+      ['audifonos','Audífonos','Para el vuelo (13+ horas)'],
+      ['cubes','Packing cube personal','Organización dentro de la maleta'],
+      ['botella','Botella de agua reutilizable','España tiene agua potable de grifo'],
+    ]
+  },
+  giovanni: {
+    label:'Giovanni · 54 años',
+    items:[
+      ['cam','Camisetas ligeras','7 unidades'],
+      ['pan','Pantalón largo casual','2 unidades'],
+      ['sho','Short','2 unidades'],
+      ['blazer','Blazer ligero o chaqueta sport','Para Corral de la Morería','MUST'],
+      ['camele','Camisa elegante','Para cenas y Piano Bar Tonny 2'],
+      ['bath','Traje de baño','2 unidades'],
+      ['int','Ropa interior + calcetines','8 + 6 pares'],
+      ['hood','Hoodie o chaqueta ligera','Avión y noches de Granada'],
+      ['pij','Pijama','1 unidad'],
+      ['zapele','Zapato casual elegante','Para Corral de la Morería'],
+      ['afeit','Afeitadora',''],
+      ['pasaporte','Pasaporte original · BA240244','Obligatorio para Alhambra','MUST'],
+      ['vuelo','Confirmación vuelo B4ZIUB','Ticket #0142326738922'],
+      ['alhambra','Entrada Alhambra · H0MHPJB/1','18 jul · 09:00h Nazaríes'],
+      ['hotel','Booking Can Farrés','#6044730097 · PIN 0673'],
+      ['tarjeta','Tarjeta de pago internacional',''],
+      ['efectivo','Efectivo €200','Para el arranque'],
+      ['seguro','Seguro médico de viaje','Verificar cobertura España'],
+      ['cablesusb','Cables USB-C para el carro','Cargar los 4 teléfonos'],
+    ]
+  },
+  samuel:{
+    label:'Samuel · 21 años',
+    items:[
+      ['cam','Camisetas','7 unidades'],
+      ['pan','Pantalón largo','2 unidades'],
+      ['sho','Short','2 unidades'],
+      ['salida','Outfit de salida nocturna','Malasaña, Chueca, Corral de la Morería','MUST'],
+      ['bath','Traje de baño','2 unidades'],
+      ['int','Ropa interior + calcetines','8 + 6 pares'],
+      ['hood','Hoodie ligero','Avión y noches'],
+      ['zapele','Zapato o tenis elegante','Para salidas en Madrid'],
+      ['pasaporte','Pasaporte original · BA245673','Obligatorio para Alhambra','MUST'],
+      ['vuelo','Confirmación vuelo','Ticket #0142326738923'],
+      ['alhambra','Entrada Alhambra · H0MHPJB/2','18 jul · 09:00h'],
+      ['tarjeta','Tarjeta de pago + efectivo €100',''],
+    ]
+  },
+  sarita:{
+    label:'Sarita · 20 años',
+    items:[
+      ['top','Tops / camisetas ligeras','7 unidades'],
+      ['pan','Pantalón largo','2 unidades'],
+      ['fal','Vestido o falda','2 unidades'],
+      ['elegante','Outfit elegante','Corral de la Morería y salidas Madrid','MUST'],
+      ['bath','Bikini / traje de baño','2 unidades'],
+      ['int','Ropa interior + calcetines','8 + 6 pares'],
+      ['chal','Chaqueta ligera o kimono','Avión y Granada'],
+      ['zapele','Zapato o sandalia elegante','Sin tacón alto — hay adoquín'],
+      ['maquillaje','Maquillaje básico','Lo mínimo, hace calor'],
+      ['pasaporte','Pasaporte original · BE719845','Obligatorio para Alhambra','MUST'],
+      ['vuelo','Confirmación vuelo','Ticket #0142326738920'],
+      ['alhambra','Entrada Alhambra · H0MHPJB/3','18 jul · 09:00h'],
+      ['tarjeta','Tarjeta de pago + efectivo €100',''],
+    ]
+  },
+  tomas:{
+    label:'Tomas · 15 años',
+    items:[
+      ['cam','Camisetas','7 unidades'],
+      ['pan','Pantalón largo','2 unidades — uno oscuro presentable'],
+      ['sho','Short','2 unidades'],
+      ['camele','Camisa para salir','Para el Corral de la Morería','MUST'],
+      ['bath','Traje de baño','2 unidades'],
+      ['int','Ropa interior + calcetines','8 + 6 pares'],
+      ['hood','Hoodie','Avión y noches'],
+      ['pasaporte','Pasaporte original · BA240240','Obligatorio para Alhambra','MUST'],
+      ['vuelo','Confirmación vuelo','Ticket #0142326738921'],
+      ['alhambra','Entrada Alhambra · H0MHPJB/4','Menor · 18 jul 09:00h'],
+    ]
+  }
+};
+
+function selectPersona(p){
+  try{ localStorage.setItem('emp_whoami', p); }catch(e){}
+  renderEmpaque(p);
+}
+function switchPersona(){
+  document.getElementById('emp-selector').style.display='block';
+  document.getElementById('emp-checklist').style.display='none';
+}
+function renderEmpaque(persona){
+  document.getElementById('emp-selector').style.display='none';
+  document.getElementById('emp-checklist').style.display='block';
+  document.getElementById('emp-greeting').textContent = 'Hola, ' + empData[persona].label.split(' ·')[0];
+  document.getElementById('emp-name-title').textContent = empData[persona].label.split(' ·')[0] + 's';
+
+  const sectionsEl = document.getElementById('emp-sections');
+  sectionsEl.innerHTML = '';
+
+  ['shared', persona].forEach(key=>{
+    const section = empData[key];
+    const div = document.createElement('div');
+    div.className='emp-section';
+    let html = `<div class="emp-section-title">${section.label}</div>`;
+    section.items.forEach(item=>{
+      const [id, name, note, badge] = item;
+      const fullKey = 'emp_' + persona + '_' + key + '_' + id;
+      html += `<div class="emp-item" data-key="${fullKey}" onclick="toggleEmpItem(this)">
+        <div class="emp-item-check"></div>
+        <div><div class="emp-item-name">${name}${badge?'<span class="emp-must-badge">'+badge+'</span>':''}</div>${note?'<div class="emp-item-note">'+note+'</div>':''}</div>
+      </div>`;
+    });
+    div.innerHTML = html;
+    sectionsEl.appendChild(div);
+  });
+
+  // restore checked state
+  document.querySelectorAll('#emp-sections .emp-item').forEach(el=>{
+    const k = el.dataset.key;
+    try{ if(localStorage.getItem(k)==='1') el.classList.add('checked'); }catch(e){}
+  });
+  updateEmpProgress();
+}
+function toggleEmpItem(el){
+  el.classList.toggle('checked');
+  try{ localStorage.setItem(el.dataset.key, el.classList.contains('checked')?'1':'0'); }catch(e){}
+  updateEmpProgress();
+}
+function updateEmpProgress(){
+  const all = document.querySelectorAll('#emp-sections .emp-item');
+  const checked = document.querySelectorAll('#emp-sections .emp-item.checked');
+  const total = all.length, done = checked.length;
+  const pct = total>0 ? Math.round((done/total)*100) : 0;
+  document.getElementById('emp-progress-count').textContent = done + ' / ' + total + ' listo';
+  document.getElementById('emp-ring-pct').textContent = pct + '%';
+  const circumference = 264;
+  const offset = circumference - (pct/100)*circumference;
+  document.getElementById('emp-ring-fill').style.strokeDashoffset = offset;
+}
+
+// Auto-load saved persona on page visit
+(function(){
+  try{
+    const saved = localStorage.getItem('emp_whoami');
+    if(saved && empData[saved]){
+      // Will render once user navigates to Empaque tab
+      window.addEventListener('DOMContentLoaded', ()=>{});
+    }
+  }catch(e){}
+})();
+// Hook into goPage to auto-render empaque
+const _origGoPage = goPage;
+goPage = function(id){
+  _origGoPage(id);
+  if(id==='empaque'){
+    try{
+      const saved = localStorage.getItem('emp_whoami');
+      if(saved && empData[saved]) renderEmpaque(saved);
+    }catch(e){}
+  }
+};
 </script>
 </body>
 </html>
