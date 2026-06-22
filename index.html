@@ -62,18 +62,19 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
 .p-leg-d{font-size:9px;color:rgba(255,255,255,.3);display:block}
 
 /* ── MAPA ── */
-.mapa-wrap{background:var(--navy);min-height:calc(100vh - 44px);padding:32px 40px;display:flex;flex-direction:column;gap:24px}
+.mapa-wrap{background:var(--navy);min-height:calc(100vh - 44px);padding:32px 40px}
+.route-legs{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.route-leg{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(201,168,76,0.15);border-radius:6px;padding:14px 16px;text-decoration:none;transition:all .15s;cursor:pointer}
+.route-leg:hover,.route-leg:active{background:rgba(255,255,255,0.1);border-color:var(--gold)}
+.route-leg.fixed{border-color:rgba(196,88,58,0.5);background:rgba(196,88,58,0.08)}
+.route-leg.exc{border-color:rgba(107,122,62,0.3);background:rgba(107,122,62,0.06)}
+.route-leg-num{font-family:var(--font-display);font-size:18px;color:var(--gold);font-weight:700;width:34px;flex-shrink:0;text-align:center}
+.route-leg-info{flex:1;min-width:0}
+.route-leg-title{font-size:13.5px;font-weight:600;color:#fff}
+.route-leg-meta{font-size:11px;color:rgba(255,255,255,0.45);margin-top:2px}
+.route-leg-arrow{font-size:11px;color:var(--gold);font-weight:600;white-space:nowrap;flex-shrink:0}
 .mapa-title{font-family:var(--font-display);font-size:28px;font-weight:400;color:#fff}
 .mapa-title em{font-style:italic;color:var(--gold)}
-.mapa-body{display:grid;grid-template-columns:1fr 380px;gap:32px;flex:1}
-.mapa-svg-wrap{background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.15);border-radius:4px;display:flex;align-items:center;justify-content:center;padding:20px;min-height:500px}
-.mapa-stops{display:flex;flex-direction:column;gap:8px}
-.stop-card{background:rgba(255,255,255,.06);border-left:3px solid var(--gold);padding:10px 14px;border-radius:0 3px 3px 0;cursor:pointer;transition:background .2s}
-.stop-card:hover{background:rgba(255,255,255,.1)}
-.stop-num{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:2px}
-.stop-city{font-size:14px;font-weight:600;color:#fff}
-.stop-dates{font-size:11px;color:rgba(255,255,255,.5)}
-.stop-km{font-size:10px;color:var(--gold);margin-top:2px}
 
 /* ── PLAN DÍA POR DÍA ── */
 .dayplan-table{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;border:1px solid var(--border);border-radius:3px;overflow:hidden}
@@ -220,9 +221,6 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
   .exc-card{min-width:200px}
 
   /* Map */
-  .mapa-body{grid-template-columns:1fr}
-  .mapa-svg-wrap{min-height:260px;padding:12px}
-  .mapa-stops{margin-top:16px}
 
   /* Tables — horizontal scroll */
   table{font-size:12px;display:block;overflow-x:auto;white-space:nowrap}
@@ -293,82 +291,161 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
 ══════════════════════════════════════════ -->
 <div id="mapa" class="page">
 <div class="mapa-wrap">
-  <div>
-    <div class="p-eyebrow">Circuito completo</div>
-    <div class="mapa-title">La <em>Ruta</em> en España</div>
+  <div class="p-eyebrow">Circuito completo · 32 días · ~4,000 km</div>
+  <div class="mapa-title">La <em>Ruta</em> en España</div>
+  <p style="color:rgba(255,255,255,0.5);font-size:13px;max-width:640px;margin:10px 0 4px;line-height:1.6">Toca cualquier tramo y se abre Google Maps con la ruta calculada desde donde estés hasta el siguiente destino — no hay que escribir ni buscar nada, ideal para usar directo en el carro.</p>
+
+  <div class="route-legs">
+    <a class="route-leg fixed" href="https://www.google.com/maps/dir/?api=1&destination=Madrid-Barajas%20Airport%20Terminal%204%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">✈️</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">Llegada · Madrid T4</div>
+        <div class="route-leg-meta">21–22 jun · Recoger coche al aterrizar 08:30h</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
+    <a class="route-leg" href="https://www.google.com/maps/dir/?api=1&destination=Zaragoza%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">01</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">Madrid T4 → Zaragoza</div>
+        <div class="route-leg-meta">325 km · 3h · parada almuerzo</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
+    <a class="route-leg" href="https://www.google.com/maps/dir/?api=1&destination=Cam%C3%AD%20de%20Can%20Farr%C3%A9s%2C%20S/N%2C%2008294%20El%20Bruc%2C%20Barcelona%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">02</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">Zaragoza → El Bruc · Masia Can Farrés ✅</div>
+        <div class="route-leg-meta">250 km · 2h30 · 22 jun · 1 noche</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
+    <a class="route-leg" href="https://www.google.com/maps/dir/?api=1&destination=Carrer%20de%20la%20Ind%C3%BAstria%20235%2C%20Barcelona%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">03</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">El Bruc → Barcelona · La Casa de Pere ✅</div>
+        <div class="route-leg-meta">58 km · 45 min · 23 jun (tras diligencia 09:00h) · 7 noches</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
+    <a class="route-leg" href="https://www.google.com/maps/dir/?api=1&destination=Ruzafa%2C%20Valencia%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">04</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">Barcelona → Valencia · Ruzafa</div>
+        <div class="route-leg-meta">350 km · 3h30 · 30 jun · 5 noches</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
+    <a class="route-leg" href="https://www.google.com/maps/dir/?api=1&destination=Castillo%20de%20Santa%20B%C3%A1rbara%2C%20Alicante%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">05</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">Valencia → Alicante (parada)</div>
+        <div class="route-leg-meta">170 km · 1h45 · 5 jul · castillo + Explanada + almuerzo</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
+    <a class="route-leg" href="https://www.google.com/maps/dir/?api=1&destination=Cartagena%2C%20Murcia%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">06</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">Alicante → Cartagena</div>
+        <div class="route-leg-meta">90 km · 1h · 5 jul · 2 noches</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
+    <a class="route-leg" href="https://www.google.com/maps/dir/?api=1&destination=San%20Jos%C3%A9%2C%20Almer%C3%ADa%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">07</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">Cartagena → San José · Cabo de Gata (parada)</div>
+        <div class="route-leg-meta">175 km · 2h · 7 jul · salir temprano · playas 3-4h</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
+    <a class="route-leg" href="https://www.google.com/maps/dir/?api=1&destination=M%C3%A1laga%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">08</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">San José → Málaga · Soho/Centro</div>
+        <div class="route-leg-meta">200 km · 2h · 7 jul · 7 noches</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
+    <a class="route-leg" href="https://www.google.com/maps/dir/?api=1&destination=Realejo%2C%20Granada%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">09</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">Málaga → Granada · Realejo</div>
+        <div class="route-leg-meta">130 km · 1h30 · 14 jul · 4 noches</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
+    <a class="route-leg fixed" href="https://www.google.com/maps/dir/?api=1&destination=Malasa%C3%B1a%2C%20Madrid%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">10</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">Granada → Madrid · Malasaña ⚑ tras Alhambra 09:00h</div>
+        <div class="route-leg-meta">430 km · 4h · 18 jul · 5 noches</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
+    <a class="route-leg" href="https://www.google.com/maps/dir/?api=1&destination=Madrid-Barajas%20Airport%20Terminal%204%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">✈️</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">Devolver coche · Madrid T4</div>
+        <div class="route-leg-meta">23 jul · Vuelo de regreso a Bogotá</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
   </div>
-  <div class="mapa-body">
-    <div class="mapa-svg-wrap">
-      <svg viewBox="0 0 560 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:560px">
-        <!-- Spain outline simplified -->
-        <path d="M80,60 L120,40 L160,35 L200,40 L240,30 L290,25 L340,30 L380,45 L420,40 L460,60 L490,90 L500,130 L495,170 L480,200 L470,230 L460,260 L455,290 L445,320 L430,350 L410,370 L390,390 L360,400 L330,410 L300,415 L270,420 L240,415 L210,405 L180,390 L155,370 L130,345 L110,315 L95,280 L80,250 L65,220 L55,190 L50,160 L55,130 L65,100 Z" fill="rgba(255,255,255,0.06)" stroke="rgba(201,168,76,0.3)" stroke-width="1.5"/>
-        <!-- Portugal area -->
-        <path d="M80,60 L65,100 L55,130 L50,160 L55,190 L65,220 L80,250 L95,280 L110,315 L115,310 L105,280 L90,250 L78,220 L70,190 L68,160 L72,130 L82,100 L90,70 Z" fill="rgba(255,255,255,0.04)" stroke="rgba(255,255,255,0.15)" stroke-width="1" stroke-dasharray="3,3"/>
-        <!-- Pyrenees marker -->
-        <path d="M240,30 L290,25 L340,30" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
 
-        <!-- ROUTE LINE -->
-        <path d="M285,115 L230,95 L225,100 L230,170 L232,175 L240,280 L235,295 L220,325 L240,365 L280,385 L310,360 L340,310 L335,265" 
-              stroke="rgba(201,168,76,0.7)" stroke-width="2.5" fill="none" stroke-dasharray="6,3"/>
-
-        <!-- CITY DOTS & LABELS -->
-        <!-- 1 Madrid (start/end) -->
-        <circle cx="285" cy="195" r="8" fill="#888780" stroke="var(--navy)" stroke-width="2"/>
-        <text x="295" y="199" fill="rgba(255,255,255,0.8)" font-size="10" font-family="DM Sans,sans-serif" font-weight="600">Madrid</text>
-        <text x="295" y="210" fill="rgba(255,255,255,0.4)" font-size="8" font-family="DM Sans,sans-serif">18–23 jul</text>
-
-        <!-- 2 Zaragoza (stop) -->
-        <circle cx="355" cy="115" r="5" fill="rgba(255,255,255,0.3)" stroke="var(--gold)" stroke-width="1.5"/>
-        <text x="363" y="119" fill="rgba(255,255,255,0.5)" font-size="9" font-family="DM Sans,sans-serif">Zaragoza ⏸</text>
-
-        <!-- 3 El Bruc -->
-        <circle cx="410" cy="130" r="5" fill="#4A6741" stroke="#fff" stroke-width="1.5"/>
-        <text x="418" y="134" fill="rgba(255,255,255,0.7)" font-size="9" font-family="DM Sans,sans-serif">El Bruc</text>
-        <text x="418" y="144" fill="rgba(255,255,255,0.35)" font-size="8" font-family="DM Sans,sans-serif">22 jun</text>
-
-        <!-- 4 Barcelona -->
-        <circle cx="430" cy="100" r="9" fill="#C4583A" stroke="#fff" stroke-width="2"/>
-        <text x="441" y="104" fill="rgba(255,255,255,0.9)" font-size="11" font-family="DM Sans,sans-serif" font-weight="600">Barcelona</text>
-        <text x="441" y="115" fill="rgba(255,255,255,0.4)" font-size="8" font-family="DM Sans,sans-serif">23–29 jun · 7n</text>
-
-        <!-- 5 Valencia -->
-        <circle cx="410" cy="210" r="8" fill="#185FA5" stroke="#fff" stroke-width="2"/>
-        <text x="420" y="214" fill="rgba(255,255,255,0.9)" font-size="10" font-family="DM Sans,sans-serif" font-weight="600">Valencia</text>
-        <text x="420" y="225" fill="rgba(255,255,255,0.4)" font-size="8" font-family="DM Sans,sans-serif">30 jun–4 jul · 5n</text>
-
-        <!-- 6 Alicante (parada) -->
-        <circle cx="400" cy="255" r="5" fill="rgba(159,148,228,0.8)" stroke="#fff" stroke-width="1.5"/>
-        <text x="407" y="259" fill="rgba(255,255,255,0.6)" font-size="9" font-family="DM Sans,sans-serif">Alicante ⏸</text>
-
-        <!-- 7 Cartagena -->
-        <circle cx="388" cy="295" r="7" fill="#BA7517" stroke="#fff" stroke-width="2"/>
-        <text x="396" y="299" fill="rgba(255,255,255,0.9)" font-size="10" font-family="DM Sans,sans-serif" font-weight="600">Cartagena</text>
-        <text x="396" y="309" fill="rgba(255,255,255,0.4)" font-size="8" font-family="DM Sans,sans-serif">5–6 jul · 2n</text>
-
-        <!-- 8 Cabo de Gata (parada) -->
-        <circle cx="360" cy="345" r="5" fill="rgba(212,112,96,0.8)" stroke="#fff" stroke-width="1.5"/>
-        <text x="367" y="349" fill="rgba(255,255,255,0.6)" font-size="9" font-family="DM Sans,sans-serif">Cabo Gata ⏸</text>
-
-        <!-- 9 Málaga -->
-        <circle cx="290" cy="385" r="9" fill="#A0522D" stroke="#fff" stroke-width="2"/>
-        <text x="276" y="403" fill="rgba(255,255,255,0.9)" font-size="11" font-family="DM Sans,sans-serif" font-weight="600">Málaga</text>
-        <text x="270" y="414" fill="rgba(255,255,255,0.4)" font-size="8" font-family="DM Sans,sans-serif">7–13 jul · 7n</text>
-
-        <!-- 10 Granada -->
-        <circle cx="320" cy="355" r="8" fill="#534AB7" stroke="#fff" stroke-width="2"/>
-        <text x="328" y="359" fill="rgba(255,255,255,0.9)" font-size="10" font-family="DM Sans,sans-serif" font-weight="600">Granada</text>
-        <text x="328" y="369" fill="rgba(255,255,255,0.4)" font-size="8" font-family="DM Sans,sans-serif">14–17 jul · 4n</text>
-
-        <!-- Route arrows / sequence numbers -->
-        <text x="276" y="133" fill="rgba(201,168,76,0.6)" font-size="9" font-family="DM Sans,sans-serif">① → ②</text>
-
-        <!-- Compass rose -->
-        <text x="80" y="430" fill="rgba(255,255,255,0.2)" font-size="11" font-family="DM Sans,sans-serif">N ↑</text>
-        <text x="30" y="290" fill="rgba(255,255,255,0.08)" font-size="52" font-family="Playfair Display,serif" transform="rotate(-90,40,290)">MAR MEDITERRÁNEO</text>
-      </svg>
-    </div>
-    <div class="mapa-stops" id="mapa-stops"></div>
+  <div class="section-eyebrow" style="margin-top:32px">🌊 Excursiones rápidas desde cada base</div>
+  <div class="route-legs">
+    <a class="route-leg exc" href="https://www.google.com/maps/dir/?api=1&destination=Cadaqu%C3%A9s%2C%20Girona%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">🌊</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">Desde Barcelona → Cadaqués</div>
+        <div class="route-leg-meta">180 km · 2h15 · Costa Brava</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
+    <a class="route-leg exc" href="https://www.google.com/maps/dir/?api=1&destination=Tarragona%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">🏛</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">Desde Barcelona → Tarragona</div>
+        <div class="route-leg-meta">100 km · 1h · ciudad romana</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
+    <a class="route-leg exc" href="https://www.google.com/maps/dir/?api=1&destination=El%20Palmar%2C%20Valencia%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">🍚</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">Desde Valencia → Albufera / El Palmar</div>
+        <div class="route-leg-meta">20 min · paella original</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
+    <a class="route-leg exc" href="https://www.google.com/maps/dir/?api=1&destination=Nerja%2C%20M%C3%A1laga%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">🏖</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">Desde Málaga → Nerja</div>
+        <div class="route-leg-meta">55 km · 45 min · cuevas + Balcón de Europa</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
+    <a class="route-leg exc" href="https://www.google.com/maps/dir/?api=1&destination=Ronda%2C%20M%C3%A1laga%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">🦅</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">Desde Málaga → Ronda</div>
+        <div class="route-leg-meta">110 km · 1h15 · Puente Nuevo</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
+    <a class="route-leg exc" href="https://www.google.com/maps/dir/?api=1&destination=Toledo%2C%20Espa%C3%B1a&travelmode=driving" target="_blank">
+      <div class="route-leg-num">👑</div>
+      <div class="route-leg-info">
+        <div class="route-leg-title">Desde Madrid → Toledo</div>
+        <div class="route-leg-meta">75 km · 45 min · ciudad medieval</div>
+      </div>
+      <div class="route-leg-arrow">📍 Abrir Maps →</div>
+    </a>
   </div>
+
 </div>
 </div>
 
@@ -1619,23 +1696,7 @@ buildCal('cal-jun',6);buildCal('cal-jul',7);
 const lg=document.getElementById('p-legend');
 legend.forEach(l=>{const item=document.createElement('div');item.className='p-leg';item.innerHTML=`<div class="p-leg-sw" style="background:${l.color}"></div><div class="p-leg-txt">${l.label}<span class="p-leg-d">${l.dates}</span></div>`;lg.appendChild(item);});
 
-// ── MAPA STOPS ──
-const stops=[
-  {num:'01',city:'El Bruc',dates:'22 jun · 1 noche',km:'575 km desde Madrid T4',page:'elbruc'},
-  {num:'02',city:'Barcelona',dates:'23–29 jun · 7 noches',km:'58 km desde El Bruc',page:'barcelona'},
-  {num:'03',city:'Valencia',dates:'30 jun–4 jul · 5 noches',km:'350 km desde Barcelona',page:'valencia'},
-  {num:'04',city:'Cartagena',dates:'5–6 jul · 2 noches',km:'260 km vía Alicante',page:'cartagena'},
-  {num:'⏸',city:'Cabo de Gata',dates:'7 jul · parada',km:'175 km desde Cartagena',page:'malaga'},
-  {num:'05',city:'Málaga',dates:'7–13 jul · 7 noches',km:'200 km desde Cabo Gata',page:'malaga'},
-  {num:'06',city:'Granada',dates:'14–17 jul · 4 noches',km:'130 km desde Málaga',page:'granada'},
-  {num:'07',city:'Madrid',dates:'18–22 jul · 5 noches',km:'430 km desde Granada',page:'madrid'},
-];
-const ms=document.getElementById('mapa-stops');
-stops.forEach(s=>{
-  const c=document.createElement('div');c.className='stop-card';
-  c.innerHTML=`<div class="stop-num">Parada ${s.num}</div><div class="stop-city">${s.city}</div><div class="stop-dates">${s.dates}</div><div class="stop-km">🚗 ${s.km}</div>`;
-  c.onclick=()=>goPage(s.page);ms.appendChild(c);
-});
+// (mapa-stops JS removido — Ruta ahora es estática con links directos)
 // ── EMPAQUE: datos por persona ──
 const empData = {
   shared: {
