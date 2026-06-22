@@ -75,7 +75,16 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
 .mapa-title{font-family:var(--font-display);font-size:28px;font-weight:400;color:#fff}
 .mapa-title em{font-style:italic;color:var(--gold)}
 
-/* ── PLAN DÍA POR DÍA ── */
+/* ── BOTÓN FLOTANTE FOTOS ── */
+.photo-fab{position:fixed;bottom:20px;right:20px;z-index:200;background:var(--terra);color:#fff;display:flex;align-items:center;gap:8px;padding:12px 18px;border-radius:30px;text-decoration:none;box-shadow:0 4px 16px rgba(0,0,0,0.35);font-family:var(--font-body);font-size:13px;font-weight:600;transition:transform .2s}
+.photo-fab:hover,.photo-fab:active{transform:scale(1.05)}
+.photo-fab-icon{font-size:17px}
+@media(max-width:500px){
+  .photo-fab{bottom:16px;right:16px;padding:11px 14px}
+  .photo-fab-text{display:none}
+  .photo-fab-icon{font-size:19px}
+}
+
 .dayplan-table{width:100%;border-collapse:collapse;font-size:12.5px;background:#fff;border:1px solid var(--border);border-radius:3px;overflow:hidden}
 .dayplan-table thead{background:var(--navy);color:#fff}
 .dayplan-table th{padding:10px 12px;font-size:9.5px;letter-spacing:1px;text-transform:uppercase;text-align:left;font-weight:500;white-space:nowrap}
@@ -1605,11 +1614,17 @@ body{font-family:var(--font-body);background:var(--white);color:var(--text);font
     </div>
     <div class="act-card">
       <div class="act-name">3 · Al regresar</div>
-      <div class="act-detail">Sandra abre la hoja con las 32 días de anécdotas ya ordenadas, las cruza con el itinerario, y arma la bitácora o el libro de fotos del viaje.</div>
+      <div class="act-detail">Al regreso, abren la hoja con las 32 días de anécdotas ya ordenadas, las cruzan con el itinerario, y armas la bitácora o el libro de fotos del viaje.</div>
     </div>
   </div>
 </div>
 </div>
+
+<!-- BOTÓN FLOTANTE · FOTOS COMPARTIDAS (visible en todas las páginas) -->
+<a href="https://photos.app.goo.gl/6HPg3CcP4Q2K7KBu6" target="_blank" class="photo-fab" title="Subir fotos del viaje">
+  <span class="photo-fab-icon">📸</span>
+  <span class="photo-fab-text">Fotos</span>
+</a>
 
 <script>
 // ── NAVIGATION ──
